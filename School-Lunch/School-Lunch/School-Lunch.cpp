@@ -7,8 +7,8 @@ using namespace std;
 
 int main()
 {
-    cout << "Welcome to the school lunch system";
-    cout << "__________________________________";
+    cout << "Welcome to the school lunch system" << endl;
+    cout << "----------------------------------" << endl;
 
     return 0;
 }
