@@ -19,12 +19,50 @@ struct user {                                                                   
         age = age_entered;
         admin = admin_entered;
     };
+
+    user() {                           //default constructor
+        username = " ";
+        password = " ";
+        int age = 0;
+        admin = false;
+    }
 };
 
-int main()
+// beverage menu
+
+struct food {                          // food structure declaration and constructors
+    string name;
+    float price;
+    int count;
+
+    food(string n, float p) {           
+        name = n;
+        price = p;
+        count = 0;
+    }
+};
+
+struct beverage {                    // beverage structure declaration and constructors
+    string name;
+    float price;
+    int count;
+
+    beverage(string n, float p) {
+        name = n;
+        price = p;
+        count = 0;
+    }
+};
+
+int main()                                                                             //welcome menu
 {
     cout << "Welcome to the school lunch system" << endl;
     cout << "----------------------------------" << endl;
+
+    cout << "1.Place an order" << endl;
+    cout << "2.View lunch Cart" << endl;
+    cout << "3.Login or Register" << "\n" << endl;
+    cout << "4.Exit" << "\n" << endl;
 
     char initial_input = '\n';
 
@@ -75,4 +113,6 @@ int main()
     
     return 0;
 }
+
+
 
