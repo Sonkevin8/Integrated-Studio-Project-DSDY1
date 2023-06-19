@@ -10,7 +10,7 @@ struct user {                                                                   
 
     string username;
     string password;
-    int age = 0;
+    int age;
     bool admin = false;
 
     user(string username_entered, string password_entered, int age_entered, bool admin_entered) {       //Constructor to be used to easily instantiate and declare new object variables of user defined type.
@@ -23,7 +23,7 @@ struct user {                                                                   
     user() {                           //default constructor
         username = " ";
         password = " ";
-        int age = 0;
+        age = -1;
         admin = false;
     }
 };
@@ -31,6 +31,7 @@ struct user {                                                                   
 // beverage menu
 
 struct food {                          // food structure declaration and constructors
+    
     string name;
     float price;
     int count;
@@ -56,16 +57,17 @@ struct beverage {                    // beverage structure declaration and const
 
 int main()                                                                             //welcome menu
 {
-    bool run = true;                                                                   //THis will ensuer multiple iterations of the program can be run at the same time
+    bool run = true;          //THis will ensuer multiple iterations of the program can be run at the same time
+    
+    user entries[5] = { user(), user(), user(), user(), user() };                                                   //Up to five users may login and register with the program in any given instance of the program
+
     while (run) {
         
         cout << "Welcome to the school lunch system" << endl;
         cout << "----------------------------------" << endl;
 
         char initial_input = '\n';
-
-        user entries[5];                                                                                 //Able to store entities so a person may logout and sign in as a different user
-
+                                                                              
         cout << endl << "To utulise this you program you must have an account" << endl;
         cout << "Up to five users can log in at a time. " << endl;
         cout << "Would you like to login (L/l) or register (R/r)? ";
@@ -82,10 +84,15 @@ int main()                                                                      
         }
         if (initial_input == 'l') {
             
-            if (entries[0].age == 0) {
+            if (entries[0].age == -1) {                                                                              //If there are no users currently registered to the system user should not be able to login
                 cout << endl <<"There are no users currently registered in the program! " << endl;
                 cout << "Please create an account to get started" << endl << endl;
-                initial_input = 'r';
+            }
+            else {
+                cout <<"Age: " << entries[0].age << endl;
+                cout <<"Username: " << entries[0].username << endl;
+                cout <<"Password " << entries[0].password << endl;
+                cout <<"Admin? " << entries[0].admin << endl;
             }
 
         }
@@ -138,16 +145,17 @@ int main()                                                                      
 
             while (iteration < 5)                                                                                               //As the list is a static list we can use a while loop to iterate through the array and find an empty spot to store the information
             {   
-                if (entries[iteration].age == 0) {
+                if (entries[iteration].age == -1) {
+                    
                     entries[iteration] = entry1;
                     break;
                 }
                 else {
-                    cout << "Sorry the maximum number of entries have been made please login or restart the program" << endl;
+                    iteration++;
                 }
             }
-
-            cout << "Account has been successfully created! PLease login and access our menu" << endl;
+         
+            cout << "Account has been successfully created! PLease login and access our menu" << endl << endl;
         }
 
     }
