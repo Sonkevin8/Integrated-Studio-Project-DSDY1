@@ -145,7 +145,6 @@ int main()                                                                      
                         cout << "Would you like to: " << endl << endl;
                         cout << "1) Place an order" << endl;
                         cout << "2) View lunch Cart" << endl;
-                        cout << "3) Login or Register" << "\n" << endl;
                         cout << "4)Logout" << "\n" << endl;
 
                         cin >> user_menu_selection;
