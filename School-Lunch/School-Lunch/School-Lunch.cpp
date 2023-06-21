@@ -71,13 +71,16 @@ int main()                                                                      
                                                                               
         cout << endl << "To utulise this you program you must have an account" << endl;
         cout << "Up to five users can log in at a time. " << endl;
-        cout << "Would you like to login (L/l) or register (R/r)? ";
+        cout << "Would you like to" << endl;
+        cout << "a) Login (L/l)" << endl;
+        cout << "b) Register (R/r)" << endl;
+        cout << "c) Exit (E/e)" << endl;
 
         cin >> initial_input;
 
         initial_input = tolower(initial_input);
 
-        while (initial_input != 'l' && initial_input != 'r') {
+        while (initial_input != 'l' && initial_input != 'r' && initial_input != 'e') {
             cin.clear();
             cin.ignore();
             cout << "Please enter in a valid input ";
@@ -86,7 +89,7 @@ int main()                                                                      
         if (initial_input == 'l') {
             
             if (entries[0].age == -1) {                                                                                                     //If there are no users currently registered to the system user should not be able to login
-                     
+                cout << "Error, there are no accounts registered. PLease create an account to continue" << endl << endl;
             }
             else {
                 cout << "Please select an account to log into the system with; " << endl;
@@ -94,6 +97,7 @@ int main()                                                                      
                 for (int index = 0; index < size; index++) {
                 
                     if (entries[index].age != -1) {
+
                         cout << entries[index].username << endl;
                     }
                 }                
@@ -161,7 +165,9 @@ int main()                                                                      
          
             cout << "Account has been successfully created! PLease login and access our menu" << endl << endl;
         }
-
+        else if (initial_input == 'e') {
+            run = false;
+        }
     }
     return 0;
 }
