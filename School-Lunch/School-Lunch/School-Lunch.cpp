@@ -59,7 +59,8 @@ int main()                                                                      
 {
     bool run = true;          //THis will ensuer multiple iterations of the program can be run at the same time
     
-    user entries[5] = { user(), user(), user(), user(), user() };                                                   //Up to five users may login and register with the program in any given instance of the program
+    const int size = 5;
+    user entries[size] = { user(), user(), user(), user(), user() };                                                   //Up to five users may login and register with the program in any given instance of the program
 
     while (run) {
         
@@ -84,15 +85,18 @@ int main()                                                                      
         }
         if (initial_input == 'l') {
             
-            if (entries[0].age == -1) {                                                                              //If there are no users currently registered to the system user should not be able to login
-                cout << endl <<"There are no users currently registered in the program! " << endl;
-                cout << "Please create an account to get started" << endl << endl;
+            if (entries[0].age == -1) {                                                                                                     //If there are no users currently registered to the system user should not be able to login
+                     
             }
             else {
-                cout <<"Age: " << entries[0].age << endl;
-                cout <<"Username: " << entries[0].username << endl;
-                cout <<"Password " << entries[0].password << endl;
-                cout <<"Admin? " << entries[0].admin << endl;
+                cout << "Please select an account to log into the system with; " << endl;
+
+                for (int index = 0; index < size; index++) {
+                
+                    if (entries[index].age != -1) {
+                        cout << entries[index].username << endl;
+                    }
+                }                
             }
 
         }
