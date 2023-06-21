@@ -92,15 +92,71 @@ int main()                                                                      
                 cout << "Error, there are no accounts registered. PLease create an account to continue" << endl << endl;
             }
             else {
-                cout << "Please select an account to log into the system with; " << endl;
+                
+                int user_selection;
+                int option = 1;
+                
+                cout << '\n' << "Please select an account by selecting the number on the left to log into the system with; " << endl;
 
                 for (int index = 0; index < size; index++) {
-                
-                    if (entries[index].age != -1) {
 
-                        cout << entries[index].username << endl;
+                    if (entries[index].age != -1) {
+                        cout << option <<") Username: " << entries[index].username << endl;
+                        option++;
                     }
-                }                
+                }
+                cout << option << ") Go back to menu " << endl;
+
+                while (!(cin >> user_selection) || user_selection > (option-1) || user_selection < 1 ) {                                   //Input validator to ensure user selects a valid option
+                    cout << "Invalid input. PLease enter in a valid input: ";
+                    cin.clear();
+                    cin.ignore(123, '\n');
+                }
+                if (user_selection == option) {                                                                                             //If the users decides to go back then by catching this option the program will go back to the main menu.
+                }
+                else {
+                    int user_account = user_selection - 1;                                                                                   //Since options starts at index 1, any user option that is selected will actually be indexed one less in the system
+                    string user_password;
+                    int password_attempts = 0;
+                   
+                    cout << entries[user_account].username <<" please enter in your password: ";
+                    
+                    cin >> user_password;
+
+                    while (user_password != entries[user_account].password) {
+                        
+                        if (password_attempts == 3) {
+                            break;
+                        }
+                        else {
+
+                            password_attempts++;
+                            cout << "The password you have enetered does not match the data withihn our systems. " << endl;
+                            cout << "Please enter in your password: ";
+                            cin >> user_password;
+                        }
+                    }
+
+                    if (user_password == entries[user_account].password) {                                                              //Once registration and login has been completed the user is presented with a menu based on whether or not they have admin authority
+                        
+                        int user_menu_selection = '\n';
+
+                        cout << endl << "Welcome back " << entries[user_account].username << endl;
+                        cout << "Would you like to: " << endl << endl;
+                        cout << "1) Place an order" << endl;
+                        cout << "2) View lunch Cart" << endl;
+                        cout << "3) Login or Register" << "\n" << endl;
+                        cout << "4)Logout" << "\n" << endl;
+
+                        cin >> user_menu_selection;
+
+                    }
+                    else if (password_attempts == 3) {
+                        cout << "Sorry you have reached maximum number of attempts, returning to menu. " << endl << endl;
+                    }
+
+                }
+
             }
 
         }
