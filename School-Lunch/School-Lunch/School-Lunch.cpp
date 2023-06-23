@@ -27,9 +27,7 @@ struct user {                                                                   
         admin = false;
     }
 };
-
-// beverage menu
-
+                                        // beverage menu
 struct food {                          // food structure declaration and constructors
     
     string name;
@@ -55,9 +53,9 @@ struct beverage {                    // beverage structure declaration and const
     }
 };
 
-int main()                                                                             //welcome menu
+int main()                                                                                                             //welcome menu
 {
-    bool run = true;          //THis will ensuer multiple iterations of the program can be run at the same time
+    bool run = true;                                                                                                   //This will ensuer multiple iterations of the program can be run at the same time
     
     const int size = 5;
     user entries[size] = { user(), user(), user(), user(), user() };                                                   //Up to five users may login and register with the program in any given instance of the program
@@ -69,8 +67,8 @@ int main()                                                                      
 
         int initial_input = 0;
                                                                               
-        cout << endl << "To utulise this you program you must have an account" << endl;
-        cout << "Up to five users can log in at a time. " << endl;
+        cout << endl << "To utulise this you program you must have an account" << endl;                                                    //Inital menu 
+        cout << "Up to five users can register at a time. " << endl;
         cout << "Would you like to" << endl;
         cout << "1) Login" << endl;
         cout << "2) Register" << endl;
@@ -80,7 +78,7 @@ int main()                                                                      
 
         initial_input = tolower(initial_input);
 
-        while (initial_input != 1 && initial_input != 2 && initial_input != 3) {
+        while (initial_input != 1 && initial_input != 2 && initial_input != 3) {                                                            //Input handler to catch most cases of bad inputs. 
             cin.clear();
             cin.ignore();
             cout << "Please enter in a valid input ";
@@ -110,7 +108,7 @@ int main()                                                                      
                 while (!(cin >> user_selection) || user_selection > option || user_selection < 1 ) {                                   //Input validator to ensure user selects a valid option
                     cout << "Invalid input. PLease enter in a valid input: ";
                     cin.clear();
-                    cin.ignore();
+                    cin.ignore(123, '\n');
                 }
                 if (user_selection == option) {                                                                                             //If the users decides to go back then by catching this option the program will go back to the main menu.
                     cout << '\n' << endl;
@@ -140,7 +138,7 @@ int main()                                                                      
 
                     if (user_password == entries[user_account].password) {                                                              //Once registration and login has been completed the user is presented with a menu based on whether or not they have admin authority
                         
-                        int user_menu_selection = '\n';
+                        int user_menu_selection = 0;
                         int menu_options = 1;
 
                         cout << endl << "Welcome back " << entries[user_account].username << endl;
@@ -157,6 +155,10 @@ int main()                                                                      
                         }
 
                         cin >> user_menu_selection;
+
+                        if (user_menu_selection < 1 || user_menu_selection > menu_options) {
+                        
+                        }
 
                     }
                     else if (password_attempts == 3) {
@@ -201,7 +203,7 @@ int main()                                                                      
 
                 cout << "Please enter in a valid input specified within the brackets" << endl;
                 cin.clear();
-                cin.ignore();
+                cin.ignore(123, '\n');
             }
 
             if (occupation == 's') {
