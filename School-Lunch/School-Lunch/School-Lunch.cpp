@@ -67,26 +67,26 @@ int main()                                                                      
         cout << "Welcome to the school lunch system" << endl;
         cout << "----------------------------------" << endl;
 
-        char initial_input = '\n';
+        int initial_input = 0;
                                                                               
         cout << endl << "To utulise this you program you must have an account" << endl;
         cout << "Up to five users can log in at a time. " << endl;
         cout << "Would you like to" << endl;
-        cout << "a) Login (L/l)" << endl;
-        cout << "b) Register (R/r)" << endl;
-        cout << "c) Exit (E/e)" << endl;
+        cout << "1) Login" << endl;
+        cout << "2) Register" << endl;
+        cout << "3) Exit" << endl;
 
         cin >> initial_input;
 
         initial_input = tolower(initial_input);
 
-        while (initial_input != 'l' && initial_input != 'r' && initial_input != 'e') {
+        while (initial_input != 1 && initial_input != 2 && initial_input != 3) {
             cin.clear();
             cin.ignore();
             cout << "Please enter in a valid input ";
             cin >> initial_input;
         }
-        if (initial_input == 'l') {
+        if (initial_input == 1) {
             
             if (entries[0].age == -1) {                                                                                                     //If there are no users currently registered to the system user should not be able to login
                 cout << "Error, there are no accounts registered. PLease create an account to continue" << endl << endl;
@@ -107,12 +107,13 @@ int main()                                                                      
                 }
                 cout << option << ") Go back to menu " << endl;
 
-                while (!(cin >> user_selection) || user_selection > (option-1) || user_selection < 1 ) {                                   //Input validator to ensure user selects a valid option
+                while (!(cin >> user_selection) || user_selection > option || user_selection < 1 ) {                                   //Input validator to ensure user selects a valid option
                     cout << "Invalid input. PLease enter in a valid input: ";
                     cin.clear();
-                    cin.ignore(123, '\n');
+                    cin.ignore();
                 }
                 if (user_selection == option) {                                                                                             //If the users decides to go back then by catching this option the program will go back to the main menu.
+                    cout << '\n' << endl;
                 }
                 else {
                     int user_account = user_selection - 1;                                                                                   //Since options starts at index 1, any user option that is selected will actually be indexed one less in the system
@@ -140,12 +141,20 @@ int main()                                                                      
                     if (user_password == entries[user_account].password) {                                                              //Once registration and login has been completed the user is presented with a menu based on whether or not they have admin authority
                         
                         int user_menu_selection = '\n';
+                        int menu_options = 1;
 
                         cout << endl << "Welcome back " << entries[user_account].username << endl;
                         cout << "Would you like to: " << endl << endl;
-                        cout << "1) Place an order" << endl;
-                        cout << "2) View lunch Cart" << endl;
-                        cout << "4)Logout" << "\n" << endl;
+                        cout << menu_options << ") Place an order" << endl;
+                        menu_options++;
+                        cout << menu_options << ") View lunch Cart" << endl;
+                        menu_options++;
+                        cout << menu_options << ") Logout" << endl;
+                        
+                        if (entries[user_account].admin) {                                                                              //If an administrator has logged into the system they will be presented with the additional option of editing the menu. 
+                            menu_options++;
+                            cout << menu_options << ") Alter Menu?" << endl;
+                        }
 
                         cin >> user_menu_selection;
 
@@ -159,7 +168,7 @@ int main()                                                                      
             }
 
         }
-        else if (initial_input == 'r') {
+        else if (initial_input == 2) {
 
             string name;
             string password;
@@ -220,7 +229,7 @@ int main()                                                                      
          
             cout << "Account has been successfully created! PLease login and access our menu" << endl << endl;
         }
-        else if (initial_input == 'e') {
+        else if (initial_input == 3) {
             run = false;
         }
     }
