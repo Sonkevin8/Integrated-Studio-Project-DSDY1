@@ -27,7 +27,7 @@ struct user {                                                                   
         admin = false;
     }
 };
-                                        // beverage menu
+                                          // beverage menu
 struct food {                          // food structure declaration and constructors
     
     string name;
@@ -51,6 +51,13 @@ struct beverage {                    // beverage structure declaration and const
         price = p;
         count = 0;
     }
+};
+
+struct food_cart {
+
+    food item;
+    beverage drink;
+    food_cart* next;
 };
 
 int main()                                                                                                             //welcome menu
@@ -124,11 +131,11 @@ int main()                                                                      
 
                     while (user_password != entries[user_account].password) {
                         
-                        if (password_attempts == 3) {
+                        if (password_attempts == 2) {
+                            cout << "You have reached the maxmimum number of attempts allowed, returning to menu" << '\n' << endl;
                             break;
                         }
                         else {
-       
                             password_attempts++;
                             cout << "The password you have enetered does not match the data withihn our systems. " << endl;
                             cout << "Please enter in your password: ";
@@ -162,7 +169,7 @@ int main()                                                                      
                                 cin.ignore();
                                 cin >> user_menu_selection;
                             }
-                            if (user_menu_selection == 1) {
+                            if (user_menu_selection == 1) {                                                                                                     //code for the functions
                                 cout << "This button 1 is working!" << endl;
                                 menu_options = 1;
                             }
@@ -181,10 +188,6 @@ int main()                                                                      
                             }
                         }
                     }
-                    else if (password_attempts == 3) {
-                        cout << "Sorry you have reached maximum number of attempts, returning to menu. " << endl << endl;
-                    }
-
                 }
 
             }
