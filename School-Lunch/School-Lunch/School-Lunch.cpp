@@ -128,38 +128,58 @@ int main()                                                                      
                             break;
                         }
                         else {
-
+       
                             password_attempts++;
                             cout << "The password you have enetered does not match the data withihn our systems. " << endl;
                             cout << "Please enter in your password: ";
                             cin >> user_password;
                         }
                     }
-
                     if (user_password == entries[user_account].password) {                                                              //Once registration and login has been completed the user is presented with a menu based on whether or not they have admin authority
                         
                         int user_menu_selection = 0;
                         int menu_options = 1;
 
                         cout << endl << "Welcome back " << entries[user_account].username << endl;
-                        cout << "Would you like to: " << endl << endl;
-                        cout << menu_options << ") Place an order" << endl;
-                        menu_options++;
-                        cout << menu_options << ") View lunch Cart" << endl;
-                        menu_options++;
-                        cout << menu_options << ") Logout" << endl;
                         
-                        if (entries[user_account].admin) {                                                                              //If an administrator has logged into the system they will be presented with the additional option of editing the menu. 
+                        bool stay_logged_in = true;
+                        while (stay_logged_in) {   
+                            cout << "Would you like to: " << endl << endl;
+                            cout << menu_options << ") Place an order" << endl;
+                            menu_options++;
+                            cout << menu_options << ") View lunch Cart" << endl;
+                            menu_options++;
+                            cout << menu_options << ") Logout" << endl;
+                        
+                            if (entries[user_account].admin) {                                                                              //If an administrator has logged into the system they will be presented with the additional option of editing the menu. 
                             menu_options++;
                             cout << menu_options << ") Alter Menu?" << endl;
+                            }
+                            while(!(cin >> user_menu_selection) || user_menu_selection < 1 || user_menu_selection > menu_options) {                                            //If user tries to inpout an option that doesnt exist, this if statment will catch it. 
+                               
+                                cout << "Error. You have entered an invalid input. PLease enter a valid input";
+                                cin.clear();
+                                cin.ignore();
+                                cin >> user_menu_selection;
+                            }
+                            if (user_menu_selection == 1) {
+                                cout << "This button 1 is working!" << endl;
+                                menu_options = 1;
+                            }
+                            else if (user_menu_selection == 2) {
+                                cout << "This button 2 is working!" << endl;
+                                menu_options = 1;
+                            }
+                            else if (user_menu_selection == 3) {
+                                cout << "This button is working!" << endl;
+                                stay_logged_in = false;
+                                menu_options = 1;
+                            }
+                            else if (user_menu_selection == 4 && entries[user_account].admin == true) {
+                                cout << "This button 4 is working!" << endl;
+                                menu_options = 1;
+                            }
                         }
-
-                        cin >> user_menu_selection;
-
-                        if (user_menu_selection < 1 || user_menu_selection > menu_options) {
-                        
-                        }
-
                     }
                     else if (password_attempts == 3) {
                         cout << "Sorry you have reached maximum number of attempts, returning to menu. " << endl << endl;
@@ -197,9 +217,7 @@ int main()                                                                      
 
             cout << "Are you a student or a teacher at this institution (s/t): ";
 
-            cin >> occupation;
-
-            while (!cin >> occupation && occupation != 's' && occupation != 't') {
+            while (!(cin >> occupation) && occupation != 's' && occupation != 't') {
 
                 cout << "Please enter in a valid input specified within the brackets" << endl;
                 cin.clear();
