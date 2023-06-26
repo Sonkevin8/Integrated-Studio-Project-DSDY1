@@ -2,6 +2,7 @@
 //Student names: Scott Tutone, 
 
 #include <iostream>
+#include <vector>
 #include <string>
 
 using namespace std;
@@ -64,14 +65,17 @@ int main()                                                                      
 {
     bool run = true;                                                                                                   //This will ensuer multiple iterations of the program can be run at the same time
     
-    const int size = 5;
-    user entries[size] = { user(), user(), user(), user(), user() };                                                   //Up to five users may login and register with the program in any given instance of the program
+    
+    vector<user> users = {user()};                                                   //Using a vector so that the array of users that may log in at any given instance of the program can increase as needed
+    
+    
 
     while (run) {
         
         cout << "Welcome to the school lunch system" << endl;
         cout << "----------------------------------" << endl;
-
+        
+        int vec_size = users.size();
         int initial_input = 0;
                                                                               
         cout << endl << "To utulise this you program you must have an account" << endl;                                                    //Inital menu 
@@ -93,20 +97,20 @@ int main()                                                                      
         }
         if (initial_input == 1) {
             
-            if (entries[0].age == -1) {                                                                                                     //If there are no users currently registered to the system user should not be able to login
+            if (users[0].age == -1) {                                                                                                     //If there are no users currently registered to the system user should not be able to login
                 cout << "Error, there are no accounts registered. PLease create an account to continue" << endl << endl;
             }
             else {
                 
-                int user_selection;
+                int user_selection = -1;
                 int option = 1;
                 
                 cout << '\n' << "Please select an account by selecting the number on the left to log into the system with; " << endl;
 
-                for (int index = 0; index < size; index++) {
+                for (int index = 0; index < vec_size; index++) {
 
-                    if (entries[index].age != -1) {
-                        cout << option <<") Username: " << entries[index].username << endl;
+                    if (users[index].age != -1) {
+                        cout << option <<") Username: " << users[index].username << endl;
                         option++;
                     }
                 }
@@ -125,11 +129,11 @@ int main()                                                                      
                     string user_password;
                     int password_attempts = 0;
                    
-                    cout << entries[user_account].username <<" please enter in your password: ";
+                    cout << users[user_account].username <<" please enter in your password: ";
                     
                     cin >> user_password;
 
-                    while (user_password != entries[user_account].password) {
+                    while (user_password != users[user_account].password) {
                         
                         if (password_attempts == 2) {
                             cout << "You have reached the maxmimum number of attempts allowed, returning to menu" << '\n' << endl;
@@ -142,12 +146,12 @@ int main()                                                                      
                             cin >> user_password;
                         }
                     }
-                    if (user_password == entries[user_account].password) {                                                              //Once registration and login has been completed the user is presented with a menu based on whether or not they have admin authority
+                    if (user_password == users[user_account].password) {                                                              //Once registration and login has been completed the user is presented with a menu based on whether or not they have admin authority
                         
                         int user_menu_selection = 0;
                         int menu_options = 1;
 
-                        cout << endl << "Welcome back " << entries[user_account].username << endl;
+                        cout << endl << "Welcome back " << users[user_account].username << endl;
                         
                         bool stay_logged_in = true;
                         while (stay_logged_in) {   
@@ -158,7 +162,7 @@ int main()                                                                      
                             menu_options++;
                             cout << menu_options << ") Logout" << endl;
                         
-                            if (entries[user_account].admin) {                                                                              //If an administrator has logged into the system they will be presented with the additional option of editing the menu. 
+                            if (users[user_account].admin) {                                                                              //If an administrator has logged into the system they will be presented with the additional option of editing the menu. 
                             menu_options++;
                             cout << menu_options << ") Alter Menu?" << endl;
                             }
@@ -182,7 +186,7 @@ int main()                                                                      
                                 stay_logged_in = false;
                                 menu_options = 1;
                             }
-                            else if (user_menu_selection == 4 && entries[user_account].admin == true) {
+                            else if (user_menu_selection == 4 && users[user_account].admin == true) {
                                 cout << "This button 4 is working!" << endl;
                                 menu_options = 1;
                             }
@@ -197,7 +201,7 @@ int main()                                                                      
 
             string name;
             string password;
-            int age;
+            int age = 0;
             char occupation = '\n';
             bool admin = false;
 
@@ -234,20 +238,13 @@ int main()                                                                      
                 admin = true;
             }
 
-            user entry1 = user(name, password, age, admin);                                                           //creating a new user defined variable.            
+            user entry = user(name, password, age, admin);                                                           //creating a new user defined variable.            
             
-            int iteration = 0;
-
-            while (iteration < 5)                                                                                               //As the list is a static list we can use a while loop to iterate through the array and find an empty spot to store the information
-            {   
-                if (entries[iteration].age == -1) {
-                    
-                    entries[iteration] = entry1;
-                    break;
-                }
-                else {
-                    iteration++;
-                }
+            if (users[0].age == -1) {
+                users[0] = entry;
+            }
+            else {
+                users.push_back(entry);
             }
          
             cout << "Account has been successfully created! PLease login and access our menu" << endl << endl;

@@ -1,2 +1,3 @@
 ﻿  School-Lunch.cpp
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(78,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   School-Lunch.vcxproj -> C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\x64\Debug\School-Lunch.exe
