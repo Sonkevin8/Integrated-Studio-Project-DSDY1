@@ -1,233 +1,252 @@
-// School-Lunch.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//Student names: Scott Tutone, 
-
 #include <iostream>
 #include <vector>
 #include <string>
 
 using namespace std;
 
-struct user {                                                                                       //user defined variable specifically for this project for the login and registration entries as well as seperating admin users from the students
-
+struct User {
     string username;
     string password;
     int age;
-    bool admin = false;
+    bool admin;
 
-    user(string username_entered, string password_entered, int age_entered, bool admin_entered) {       //Constructor to be used to easily instantiate and declare new object variables of user defined type.
+    User(string username_entered, string password_entered, int age_entered, bool admin_entered) {
         username = username_entered;
         password = password_entered;
         age = age_entered;
         admin = admin_entered;
     };
 
-    user() {                           //default constructor
-        username = " ";
-        password = " ";
+    User() {
+        username = "";
+        password = "";
         age = -1;
         admin = false;
     }
 };
-                                          // beverage menu
-struct food {                          // food structure declaration and constructors
-    
+
+struct Food {
     string name;
     float price;
     int count;
 
-    food(string n, float p) {           
+    Food(string n, float p) {
         name = n;
         price = p;
         count = 0;
     }
 };
 
-struct beverage {                    // beverage structure declaration and constructors
+struct Beverage {
     string name;
     float price;
     int count;
 
-    beverage(string n, float p) {
+    Beverage(string n, float p) {
         name = n;
         price = p;
         count = 0;
     }
 };
 
-struct food_cart {
+struct Fruit {
+    string name;
+    float price;
+    int count;
 
-    food item;
-    beverage drink;
-    food_cart* next;
+    Fruit(string n, float p) {
+        name = n;
+        price = p;
+        count = 0;
+    }
 };
 
-int main()                                                                                                             //welcome menu
-{
-    bool run = true;                                                                                                   //This will ensuer multiple iterations of the program can be run at the same time
-    
-    
-    vector<user> users = {user()};                                                   //Using a vector so that the array of users that may log in at any given instance of the program can increase as needed
-    
-    
+struct PackageMeal {
+    string name;
+    Food main_course;
+    Beverage drink;
+    Fruit side;
+
+    PackageMeal(string n, Food f, Beverage b, Fruit s) {
+        name = n;
+        main_course = f;
+        drink = b;
+        side = s;
+    }
+};
+
+struct FoodCart {
+    PackageMeal time;
+    FoodCart* next;
+};
+
+int main() {
+    bool run = true;
+    vector<User> users = { User() };
+
+    vector<PackageMeal> menu = {
+        PackageMeal("Package 1", Food("Burger", 5.99), Beverage("Coke", 1.99), Fruit("Apple", 0.99)),
+        PackageMeal("Package 2", Food("Pizza", 7.99), Beverage("Sprite", 1.99), Fruit("Banana", 0.99)),
+        PackageMeal("Package 3", Food("Chicken Sandwich", 6.99), Beverage("Fanta", 1.99), Fruit("Orange", 0.99))
+    };
 
     while (run) {
-        
         cout << "Welcome to the school lunch system" << endl;
         cout << "----------------------------------" << endl;
-        
+
         int vec_size = users.size();
         int initial_input = 0;
-                                                                              
-        cout << endl << "To utulise this you program you must have an account" << endl;                                                    //Inital menu 
-        cout << "Would you like to" << endl;
+
+        cout << endl << "To utilize this program, you must have an account." << endl;
+        cout << "Would you like to:" << endl;
         cout << "1) Login" << endl;
         cout << "2) Register" << endl;
         cout << "3) Exit" << endl;
 
         cin >> initial_input;
 
-        initial_input = tolower(initial_input);
-
-        while (initial_input != 1 && initial_input != 2 && initial_input != 3) {                                                            //Input handler to catch most cases of bad inputs. 
+        while (initial_input != 1 && initial_input != 2 && initial_input != 3) {
             cin.clear();
             cin.ignore();
-            cout << "Please enter in a valid input ";
+            cout << "Please enter a valid input: ";
             cin >> initial_input;
         }
+
         if (initial_input == 1) {
-            
-            if (users[0].age == -1) {                                                                                                     //If there are no users currently registered to the system user should not be able to login
-                cout << "Error, there are no accounts registered. PLease create an account to continue" << endl << endl;
+            if (users[0].age == -1) {
+                cout << "Error: There are no accounts registered. Please create an account to continue." << endl << endl;
             }
             else {
-                
                 int user_selection = -1;
                 int option = 1;
-                
-                cout << '\n' << "Please select an account by selecting the number on the left to log into the system with; " << endl;
 
-                for (int index = 0; index < vec_size; index++) {
+                cout << '
+                    ' << "Please select an account by entering the corresponding number to log into the system: " << endl;
 
-                    if (users[index].age != -1) {
-                        cout << option <<") Username: " << users[index].username << endl;
-                        option++;
+                    for (int index = 0; index < vec_size; index++) {
+                        if (users[index].age != -1) {
+                            cout << option << ") Username: " << users[index].username << endl;
+                            option++;
+                        }
                     }
-                }
-                cout << option << ") Go back to menu " << endl;
+                cout << option << ") Go back to the menu " << endl;
 
-                while (!(cin >> user_selection) || user_selection > option || user_selection < 1 ) {                                   //Input validator to ensure user selects a valid option
-                    cout << "Invalid input. PLease enter in a valid input: ";
+                while (!(cin >> user_selection) || user_selection > option || user_selection < 1) {
+                    cout << "Invalid input. Please enter a valid input: ";
                     cin.clear();
-                    cin.ignore(123, '\n');
+                    cin.ignore(123, '
+                        ');
                 }
-                if (user_selection == option) {                                                                                             //If the users decides to go back then by catching this option the program will go back to the main menu.
-                    cout << '\n' << endl;
+
+                if (user_selection == option) {
+                    cout << '
+                        ' << endl;
                 }
                 else {
-                    int user_account = user_selection - 1;                                                                                   //Since options starts at index 1, any user option that is selected will actually be indexed one less in the system
+                    int user_account = user_selection - 1;
                     string user_password;
                     int password_attempts = 0;
-                   
-                    cout << users[user_account].username <<" please enter in your password: ";
-                    
+
+                    cout << users[user_account].username << ", please enter your password: ";
                     cin >> user_password;
 
                     while (user_password != users[user_account].password) {
-                        
                         if (password_attempts == 2) {
-                            cout << "You have reached the maxmimum number of attempts allowed, returning to menu" << '\n' << endl;
-                            break;
+                            cout << "You have reached the maximum number of attempts allowed. Returning to the menu." << '
+                                ' << endl;
+                                break;
                         }
                         else {
                             password_attempts++;
-                            cout << "The password you have enetered does not match the data withihn our systems. " << endl;
-                            cout << "Please enter in your password: ";
+                            cout << "The password you have entered does not match the data within our systems." << endl;
+                            cout << "Please enter your password: ";
                             cin >> user_password;
                         }
                     }
-                    if (user_password == users[user_account].password) {                                                              //Once registration and login has been completed the user is presented with a menu based on whether or not they have admin authority
-                        
+
+                    if (user_password == users[user_account].password) {
                         int user_menu_selection = 0;
                         int menu_options = 1;
 
-                        cout << endl << "Welcome back " << users[user_account].username << endl;
-                        
+                        cout << endl << "Welcome back, " << users[user_account].username << "!" << endl;
+
                         bool stay_logged_in = true;
-                        while (stay_logged_in) {   
-                            cout << "Would you like to: " << endl << endl;
+
+                        while (stay_logged_in) {
+                            cout << "Would you like to:" << endl << endl;
                             cout << menu_options << ") Place an order" << endl;
                             menu_options++;
                             cout << menu_options << ") View lunch Cart" << endl;
                             menu_options++;
                             cout << menu_options << ") Logout" << endl;
-                        
-                            if (users[user_account].admin) {                                                                              //If an administrator has logged into the system they will be presented with the additional option of editing the menu. 
-                            menu_options++;
-                            cout << menu_options << ") Alter Menu?" << endl;
+
+                            if (users[user_account].admin) {
+                                menu_options++;
+                                cout << menu_options << ") Edit Menu" << endl;
                             }
-                            while(!(cin >> user_menu_selection) || user_menu_selection < 1 || user_menu_selection > menu_options) {                                            //If user tries to inpout an option that doesnt exist, this if statment will catch it. 
-                               
-                                cout << "Error. You have entered an invalid input. PLease enter a valid input";
+
+                            while (!(cin >> user_menu_selection) || user_menu_selection < 1 || user_menu_selection > menu_options) {
+                                cout << "Error: You have entered an invalid input. Please enter a valid input: ";
                                 cin.clear();
                                 cin.ignore();
                                 cin >> user_menu_selection;
                             }
-                            if (user_menu_selection == 1) {                                                                                                     //code for the functions
-                                cout << "This button 1 is working!" << endl;
+
+                            if (user_menu_selection == 1) {
+                                cout << "Button 1 is working!" << endl;
                                 menu_options = 1;
                             }
                             else if (user_menu_selection == 2) {
-                                cout << "This button 2 is working!" << endl;
+                                cout << "Button 2 is working!" << endl;
                                 menu_options = 1;
                             }
                             else if (user_menu_selection == 3) {
-                                cout << "This button is working!" << endl;
+                                cout << "Logging out..." << endl;
                                 stay_logged_in = false;
                                 menu_options = 1;
                             }
-                            else if (user_menu_selection == 4 && users[user_account].admin == true) {
-                                cout << "This button 4 is working!" << endl;
+                            else if (user_menu_selection == 4 && users[user_account].admin) {
+                                cout << "Button 4 is working!" << endl;
                                 menu_options = 1;
                             }
                         }
                     }
                 }
-
             }
-
         }
         else if (initial_input == 2) {
-
             string name;
             string password;
             int age = 0;
-            char occupation = '\n';
-            bool admin = false;
+            char occupation = '
+                ';
+                bool admin = false;
 
-            cout << endl << "To create a new account please enter in the following details " << endl;
-            cout << endl << "Enter in your username: ";
-            cin.ignore(1, '\n');                                                                                      //Since using the cin functions results in leftover of '\n' in the buffer the getline function reads it as done and skips past it 
-            getline(cin, name);                                                                                      //Therefore this ignore function will ignore the newline character allowing the user to input the data they need to
+            cout << endl << "To create a new account, please enter the following details: " << endl;
+            cout << endl << "Enter your username: ";
+            cin.ignore(1, '
+                ');
+                getline(cin, name);
 
-            cout << "Please enter in a strong password: ";
-            getline(cin, password);                                                                                  //getline function used as it also will include the spaces for user inputs
+            cout << "Please enter a strong password: ";
+            getline(cin, password);
 
-            cout << "Please enter in your age: ";
-                
-            while (!(cin >> age) || age < 0)                                                                          //input handler to catch unwanted inputs
-            {
-                cout << "ERROR: a valid number must be entered: ";
+            cout << "Please enter your age: ";
+
+            while (!(cin >> age) || age < 0) {
+                cout << "ERROR: A valid number must be entered: ";
                 cin.clear();
-                cin.ignore(123, '\n');
+                cin.ignore(123, '
+                    ');
             }
 
             cout << "Are you a student or a teacher at this institution (s/t): ";
 
             while (!(cin >> occupation) && occupation != 's' && occupation != 't') {
-
-                cout << "Please enter in a valid input specified within the brackets" << endl;
+                cout << "Please enter a valid input specified within the brackets." << endl;
                 cin.clear();
-                cin.ignore(123, '\n');
+                cin.ignore(123, '
+                    ');
             }
 
             if (occupation == 's') {
@@ -237,23 +256,21 @@ int main()                                                                      
                 admin = true;
             }
 
-            user entry = user(name, password, age, admin);                                                           //creating a new user defined variable.            
-            
+            User entry = User(name, password, age, admin);
+
             if (users[0].age == -1) {
                 users[0] = entry;
             }
             else {
                 users.push_back(entry);
             }
-         
-            cout << "Account has been successfully created! PLease login and access our menu" << endl << endl;
+
+            cout << "Account has been successfully created! Please login to access our menu." << endl << endl;
         }
         else if (initial_input == 3) {
             run = false;
         }
     }
+
     return 0;
 }
-
-
-
