@@ -79,7 +79,6 @@ int main()                                                                      
         int initial_input = 0;
                                                                               
         cout << endl << "To utulise this you program you must have an account" << endl;                                                    //Inital menu 
-        cout << "Up to five users can register at a time. " << endl;
         cout << "Would you like to" << endl;
         cout << "1) Login" << endl;
         cout << "2) Register" << endl;
