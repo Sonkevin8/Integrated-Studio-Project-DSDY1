@@ -1,12 +1,5 @@
 ﻿  School-Lunch.cpp
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(107,53): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(107,77): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(107,99): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(108,52): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(108,78): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(108,101): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(109,63): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(109,88): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(109,111): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(116,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(49,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(58,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(121,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   School-Lunch.vcxproj -> C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\x64\Debug\School-Lunch.exe

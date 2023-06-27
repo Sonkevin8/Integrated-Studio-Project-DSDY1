@@ -41,50 +41,58 @@ struct Beverage {
     }
 };
 
-struct Fruit {                                                                                                      
-    string name;
-    float price;
-    int count;
-
-    Fruit(string n, float p) {
-        name = n;
-        price = p;
-        count = 0;
-    }
-    Fruit() {
-        name = "Empty";
-        price = 0;
-        count = 0;
-    }
+vector<Food> menu = {
+    {"Sandwiches", 3.99},
+    {"Fries", 2.49},
+    {"Burgers", 4.99},
+    {"Fruits", 1.99}
 };
 
-struct PackageMeal {                                                                                                 
-    string name;
-    Food main_course;
-    Beverage drink;
-    Fruit side;
 
-    PackageMeal(string n, Food f, Beverage b, Fruit s) {
-        name = n;
-        main_course = f;
-        drink = b;
-        side = s;
-    }
 
-    PackageMeal() {
-        name = "Empty";
-        main_course = Food();
-        drink = Beverage();
-        side = Fruit();
-    }
+vector<Beverage> beverages = {
+    {"Soda", 1.49},
+    {"Water", 0.99},
+    {"Juice", 1.99},
+    {"Coffee", 2.49}
 };
+
+
+
+void showMenu() {
+    cout << "------------------------" << endl;
+    cout << "        FOOD MENU        " << endl;
+    cout << "------------------------" << endl;
+
+
+
+    int i = 1;
+    for (auto item : menu) {
+        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
+        i++;
+    }
+    cout << endl;
+
+
+
+    cout << "------------------------" << endl;
+    cout << "      BEVERAGE MENU      " << endl;
+    cout << "------------------------" << endl;
+
+
+
+    i = 1;
+    for (auto item : beverages) {
+        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
+        i++;
+    }
+}
 
 struct User {                                                                                                           //Class for the users to login 
     string username;
     string password;
     int age;
     bool admin;                                                                                                         //This bool will give more functionality for  administrative users i.e teachers
-    PackageMeal meal;
 
     User(string username_entered, string password_entered, int age_entered, bool admin_entered) {
         username = username_entered;
@@ -98,7 +106,6 @@ struct User {                                                                   
         password = "";
         age = -1;
         admin = false;
-        meal = PackageMeal();
     }
 };
 
@@ -106,12 +113,6 @@ int main() {
     
     bool run = true;
     vector<User> users = { User() };
-
-    vector<PackageMeal> menu = {
-        PackageMeal("Package 1", Food("Burger", 5.99), Beverage("Coke", 1.99), Fruit("Apple", 0.99)),
-        PackageMeal("Package 2", Food("Pizza", 7.99), Beverage("Sprite", 1.99), Fruit("Banana", 0.99)),
-        PackageMeal("Package 3", Food("Chicken Sandwich", 6.99), Beverage("Fanta", 1.99), Fruit("Orange", 0.99))
-    };
 
     while (run) {
         cout << "Welcome to the school lunch system" << endl;
