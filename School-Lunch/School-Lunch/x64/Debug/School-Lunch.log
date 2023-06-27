@@ -1,64 +1,12 @@
 ﻿  School-Lunch.cpp
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(70,16): error C2512: 'Food': no appropriate default constructor available
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(28,8): message : see declaration of 'Food'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(70,16): error C2512: 'Beverage': no appropriate default constructor available
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(40,8): message : see declaration of 'Beverage'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(70,16): error C2512: 'Fruit': no appropriate default constructor available
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(52,8): message : see declaration of 'Fruit'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(88,53): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(88,77): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(88,99): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(89,52): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(89,78): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(89,101): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(90,63): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(90,88): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(90,111): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(97,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(123,25): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(123,25): error C2137: empty character constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(124,21): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(124,21): error C2015: too many characters in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(124,21): error C2143: syntax error: missing ';' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(126,21): error C2143: syntax error: missing ';' before 'for'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(137,37): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(137,37): error C2137: empty character constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(138,25): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(138,25): error C2143: syntax error: missing ')' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(138,25): error C2143: syntax error: missing ';' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(139,17): error C2143: syntax error: missing ';' before '}'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(142,29): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(142,29): error C2137: empty character constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(143,25): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(143,25): error C2015: too many characters in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(143,25): error C2143: syntax error: missing ';' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(144,17): error C2143: syntax error: missing ';' before '}'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(155,122): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(155,122): error C2137: empty character constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(156,33): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(156,33): error C2015: too many characters in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(156,33): error C2143: syntax error: missing ';' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(157,33): error C2143: syntax error: missing ';' before 'break'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(221,31): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(221,31): error C2137: empty character constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(222,17): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(222,17): error C2143: syntax error: missing ';' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(223,17): error C2144: syntax error: 'bool' should be preceded by ';'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(227,27): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(227,27): error C2137: empty character constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(228,17): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(228,17): error C2143: syntax error: missing ')' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(228,17): error C2143: syntax error: missing ';' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(229,17): error C2146: syntax error: missing ';' before identifier 'getline'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(239,33): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(239,33): error C2137: empty character constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(240,21): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(240,21): error C2143: syntax error: missing ')' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(240,21): error C2143: syntax error: missing ';' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(241,13): error C2143: syntax error: missing ';' before '}'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(248,33): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(248,33): error C2137: empty character constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(249,21): error C2001: newline in constant
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(249,21): error C2143: syntax error: missing ')' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(249,21): error C2143: syntax error: missing ';' before 'constant'
-C:\Users\shana\OneDrive\Documents\GitHub\CS103 NEW\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(250,13): error C2143: syntax error: missing ';' before '}'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(107,53): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(107,77): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(107,99): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(108,52): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(108,78): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(108,101): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(109,63): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(109,88): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(109,111): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(116,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  School-Lunch.vcxproj -> C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\x64\Debug\School-Lunch.exe

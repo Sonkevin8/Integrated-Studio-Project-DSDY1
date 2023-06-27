@@ -4,27 +4,6 @@
 
 using namespace std;
 
-struct User {
-    string username;
-    string password;
-    int age;
-    bool admin;
-
-    User(string username_entered, string password_entered, int age_entered, bool admin_entered) {
-        username = username_entered;
-        password = password_entered;
-        age = age_entered;
-        admin = admin_entered;
-    };
-
-    User() {
-        username = "";
-        password = "";
-        age = -1;
-        admin = false;
-    }
-};
-
 struct Food {
     string name;
     float price;
@@ -35,9 +14,16 @@ struct Food {
         price = p;
         count = 0;
     }
+
+    Food() {
+        name = "Empty";
+        price = 0;
+        count = 0;
+    }
 };
 
 struct Beverage {
+    
     string name;
     float price;
     int count;
@@ -45,6 +31,12 @@ struct Beverage {
     Beverage(string n, float p) {
         name = n;
         price = p;
+        count = 0;
+    }
+    
+    Beverage() {
+        name = "Empty";
+        price = 0;
         count = 0;
     }
 };
@@ -57,6 +49,11 @@ struct Fruit {
     Fruit(string n, float p) {
         name = n;
         price = p;
+        count = 0;
+    }
+    Fruit() {
+        name = "Empty";
+        price = 0;
         count = 0;
     }
 };
@@ -73,14 +70,40 @@ struct PackageMeal {
         drink = b;
         side = s;
     }
+
+    PackageMeal() {
+        name = "Empty";
+        main_course = Food();
+        drink = Beverage();
+        side = Fruit();
+    }
 };
 
-struct FoodCart {
-    PackageMeal time;
-    FoodCart* next;
+struct User {
+    string username;
+    string password;
+    int age;
+    bool admin;
+    PackageMeal meal;
+
+    User(string username_entered, string password_entered, int age_entered, bool admin_entered) {
+        username = username_entered;
+        password = password_entered;
+        age = age_entered;
+        admin = admin_entered;
+    };
+
+    User() {
+        username = "";
+        password = "";
+        age = -1;
+        admin = false;
+        meal = PackageMeal();
+    }
 };
 
 int main() {
+    
     bool run = true;
     vector<User> users = { User() };
 
@@ -120,8 +143,7 @@ int main() {
                 int user_selection = -1;
                 int option = 1;
 
-                cout << '
-                    ' << "Please select an account by entering the corresponding number to log into the system: " << endl;
+                cout << '\n' << "Please select an account by entering the corresponding number to log into the system: " << endl;
 
                     for (int index = 0; index < vec_size; index++) {
                         if (users[index].age != -1) {
@@ -134,13 +156,11 @@ int main() {
                 while (!(cin >> user_selection) || user_selection > option || user_selection < 1) {
                     cout << "Invalid input. Please enter a valid input: ";
                     cin.clear();
-                    cin.ignore(123, '
-                        ');
+                    cin.ignore(123, '\n');
                 }
 
                 if (user_selection == option) {
-                    cout << '
-                        ' << endl;
+                    cout << '\n' << endl;
                 }
                 else {
                     int user_account = user_selection - 1;
@@ -152,8 +172,7 @@ int main() {
 
                     while (user_password != users[user_account].password) {
                         if (password_attempts == 2) {
-                            cout << "You have reached the maximum number of attempts allowed. Returning to the menu." << '
-                                ' << endl;
+                            cout << "You have reached the maximum number of attempts allowed. Returning to the menu." << '\n' << endl;
                                 break;
                         }
                         else {
@@ -218,14 +237,12 @@ int main() {
             string name;
             string password;
             int age = 0;
-            char occupation = '
-                ';
+            char occupation = '\n';
                 bool admin = false;
 
             cout << endl << "To create a new account, please enter the following details: " << endl;
             cout << endl << "Enter your username: ";
-            cin.ignore(1, '
-                ');
+            cin.ignore(1, '\n');
                 getline(cin, name);
 
             cout << "Please enter a strong password: ";
@@ -236,17 +253,15 @@ int main() {
             while (!(cin >> age) || age < 0) {
                 cout << "ERROR: A valid number must be entered: ";
                 cin.clear();
-                cin.ignore(123, '
-                    ');
+                cin.ignore(123, '\n');
             }
 
-            cout << "Are you a student or a teacher at this institution (s/t): ";
+            cout << "Are you a student or a teacher at this institution (s/t)?: ";
 
             while (!(cin >> occupation) && occupation != 's' && occupation != 't') {
                 cout << "Please enter a valid input specified within the brackets." << endl;
                 cin.clear();
-                cin.ignore(123, '
-                    ');
+                cin.ignore(123, '\n');
             }
 
             if (occupation == 's') {
