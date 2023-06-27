@@ -57,37 +57,6 @@ vector<Beverage> beverages = {
     {"Coffee", 2.49}
 };
 
-
-
-void showMenu() {
-    cout << "------------------------" << endl;
-    cout << "        FOOD MENU        " << endl;
-    cout << "------------------------" << endl;
-
-
-
-    int i = 1;
-    for (auto item : menu) {
-        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
-        i++;
-    }
-    cout << endl;
-
-
-
-    cout << "------------------------" << endl;
-    cout << "      BEVERAGE MENU      " << endl;
-    cout << "------------------------" << endl;
-
-
-
-    i = 1;
-    for (auto item : beverages) {
-        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
-        i++;
-    }
-}
-
 struct User {                                                                                                           //Class for the users to login 
     string username;
     string password;
@@ -108,6 +77,8 @@ struct User {                                                                   
         admin = false;
     }
 };
+
+void showMenu();
 
 int main() {
     
@@ -289,4 +260,34 @@ int main() {
     }
 
     return 0;
+}
+
+
+void showMenu() {                                                                                                         //Food menu code
+    cout << "------------------------" << endl;
+    cout << "        FOOD MENU        " << endl;
+    cout << "------------------------" << endl;
+
+
+
+    int i = 1;
+    for (auto item : menu) {
+        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
+        i++;
+    }
+    cout << endl;
+
+
+
+    cout << "------------------------" << endl;
+    cout << "      BEVERAGE MENU      " << endl;
+    cout << "------------------------" << endl;
+
+
+
+    i = 1;
+    for (auto item : beverages) {
+        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
+        i++;
+    }
 }
