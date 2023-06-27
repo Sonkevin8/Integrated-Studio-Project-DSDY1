@@ -4,7 +4,7 @@
 
 using namespace std;
 
-struct Food {
+struct Food {                                                                                                       
     string name;
     float price;
     int count;
@@ -22,7 +22,7 @@ struct Food {
     }
 };
 
-struct Beverage {
+struct Beverage {                                                                                                   
     
     string name;
     float price;
@@ -33,7 +33,7 @@ struct Beverage {
         price = p;
         count = 0;
     }
-    
+
     Beverage() {
         name = "Empty";
         price = 0;
@@ -41,7 +41,7 @@ struct Beverage {
     }
 };
 
-struct Fruit {
+struct Fruit {                                                                                                      
     string name;
     float price;
     int count;
@@ -58,7 +58,7 @@ struct Fruit {
     }
 };
 
-struct PackageMeal {
+struct PackageMeal {                                                                                                 
     string name;
     Food main_course;
     Beverage drink;
@@ -79,11 +79,11 @@ struct PackageMeal {
     }
 };
 
-struct User {
+struct User {                                                                                                           //Class for the users to login 
     string username;
     string password;
     int age;
-    bool admin;
+    bool admin;                                                                                                         //This bool will give more functionality for  administrative users i.e teachers
     PackageMeal meal;
 
     User(string username_entered, string password_entered, int age_entered, bool admin_entered) {
