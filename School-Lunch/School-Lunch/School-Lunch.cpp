@@ -184,7 +184,24 @@ int main() {
                             }
 
                             if (user_menu_selection == 1) {
-                                cout << "Button 1 is working!" << endl;
+                                cout << endl << "Place your order: " << endl;
+                                showMenu();
+
+                                int order_choice = 0;
+                                cout << endl << "Enter your choice: ";
+                                cin >> order_choice;
+
+                                int order_qty = 0;
+                                cout << "Enter quantity: ";
+                                cin >> order_qty;
+
+                                if (order_choice >= 1 && order_choice <= menu.size()) {
+                                    Food f = menu[order_choice - 1];
+                                    f.count = order_qty;
+
+                                    cout << endl << f.name << " x " << order_qty << " added to the cart." << endl;
+
+                                }
                                 menu_options = 1;
                             }
                             else if (user_menu_selection == 2) {
