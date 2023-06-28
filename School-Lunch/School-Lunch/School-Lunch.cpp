@@ -57,37 +57,6 @@ vector<Beverage> beverages = {
     {"Coffee", 2.49}
 };
 
-
-
-void showMenu() {
-    cout << "------------------------" << endl;
-    cout << "        FOOD MENU        " << endl;
-    cout << "------------------------" << endl;
-
-
-
-    int i = 1;
-    for (auto item : menu) {
-        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
-        i++;
-    }
-    cout << endl;
-
-
-
-    cout << "------------------------" << endl;
-    cout << "      BEVERAGE MENU      " << endl;
-    cout << "------------------------" << endl;
-
-
-
-    i = 1;
-    for (auto item : beverages) {
-        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
-        i++;
-    }
-}
-
 struct User {                                                                                                           //Class for the users to login 
     string username;
     string password;
@@ -108,6 +77,8 @@ struct User {                                                                   
         admin = false;
     }
 };
+
+void showMenu();
 
 int main() {
     
@@ -213,7 +184,24 @@ int main() {
                             }
 
                             if (user_menu_selection == 1) {
-                                cout << "Button 1 is working!" << endl;
+                                cout << endl << "Place your order: " << endl;
+                                showMenu();
+
+                                int order_choice = 0;
+                                cout << endl << "Enter your choice: ";
+                                cin >> order_choice;
+
+                                int order_qty = 0;
+                                cout << "Enter quantity: ";
+                                cin >> order_qty;
+
+                                if (order_choice >= 1 && order_choice <= menu.size()) {
+                                    Food f = menu[order_choice - 1];
+                                    f.count = order_qty;
+
+                                    cout << endl << f.name << " x " << order_qty << " added to the cart." << endl;
+
+                                }
                                 menu_options = 1;
                             }
                             else if (user_menu_selection == 2) {
@@ -289,4 +277,34 @@ int main() {
     }
 
     return 0;
+}
+
+
+void showMenu() {                                                                                                         //Food menu code
+    cout << "------------------------" << endl;
+    cout << "        FOOD MENU        " << endl;
+    cout << "------------------------" << endl;
+
+
+
+    int i = 1;
+    for (auto item : menu) {
+        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
+        i++;
+    }
+    cout << endl;
+
+
+
+    cout << "------------------------" << endl;
+    cout << "      BEVERAGE MENU      " << endl;
+    cout << "------------------------" << endl;
+
+
+
+    i = 1;
+    for (auto item : beverages) {
+        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
+        i++;
+    }
 }
