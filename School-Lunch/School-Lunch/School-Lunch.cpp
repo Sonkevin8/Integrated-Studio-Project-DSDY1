@@ -79,6 +79,7 @@ struct User {                                                                   
 };
 
 void showMenu();
+void editMenu();
 
 int main() {
     
@@ -214,7 +215,7 @@ int main() {
                                 menu_options = 1;
                             }
                             else if (user_menu_selection == 4 && users[user_account].admin) {
-                                cout << "Button 4 is working!" << endl;
+                                editMenu();
                                 menu_options = 1;
                             }
                         }
@@ -306,5 +307,110 @@ void showMenu() {                                                               
     for (auto item : beverages) {
         cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
         i++;
+    }
+}
+
+void editMenu() {
+    int menuChoice;
+    cout << "Menu Options:" << endl;
+    cout << "1. Food" << endl;
+    cout << "2. Beverage" << endl;
+
+    cin >> menuChoice;
+
+    while (menuChoice != 1 && menuChoice != 2) {
+        cout << "Invalid input. Please enter a valid menu choice: ";
+        cin.clear();
+        cin.ignore();
+        cin >> menuChoice;
+    }
+
+    if (menuChoice == 1) {
+        cout << "Food Menu Options:" << endl;
+        cout << "1. Add item" << endl;
+        cout << "2. Remove item" << endl;
+
+        int foodChoice;
+        cin >> foodChoice;
+
+        while (foodChoice != 1 && foodChoice != 2) {
+            cout << "Invalid input. Please enter a valid food menu choice: ";
+            cin.clear();
+            cin.ignore();
+            cin >> foodChoice;
+        }
+
+        if (foodChoice == 1) {
+            string itemName;
+            float itemPrice;
+
+            cout << "Enter the name of the new food item: ";
+            cin.ignore();
+            getline(cin, itemName);
+
+            cout << "Enter the price of the new food item: $";
+            cin >> itemPrice;
+
+            menu.push_back({ itemName, itemPrice });
+            cout << "Food item added!" << endl;
+        }
+        else if (foodChoice == 2) {
+            cout << "Enter the number of the food item you want to remove: ";
+
+            int itemNumber;
+            cin >> itemNumber;
+
+            if (itemNumber >= 1 && itemNumber <= menu.size()) {
+                menu.erase(menu.begin() + itemNumber - 1);
+                cout << "Food item removed successfully!" << endl;
+            }
+            else {
+                cout << "Invalid item number. No item removed." << endl;
+            }
+        }
+    }
+    else if (menuChoice == 2) {
+        cout << "Beverage Menu Options:" << endl;
+        cout << "1. Add item" << endl;
+        cout << "2. Remove item" << endl;
+
+        int beverageChoice;
+        cin >> beverageChoice;
+
+        while (beverageChoice != 1 && beverageChoice != 2) {
+            cout << "Invalid input. Please enter a valid beverage menu choice: ";
+            cin.clear();
+            cin.ignore();
+            cin >> beverageChoice;
+        }
+
+        if (beverageChoice == 1) {
+            string itemName;
+            float itemPrice;
+
+            cout << "Enter the name of the new beverage item: ";
+            cin.ignore();
+            getline(cin, itemName);
+
+            cout << "Enter the price of the new beverage item: $";
+            cin >> itemPrice;
+
+            beverages.push_back({ itemName, itemPrice });
+            cout << "Beverage item added successfully!" << endl;
+        }
+        else if (beverageChoice == 2) {
+            cout << "Enter the number of the beverage item you want to remove: ";
+
+            int itemNumber;
+            cin >> itemNumber;
+
+            if (itemNumber >= 1 && itemNumber <= beverages.size()) {
+                beverages.erase(beverages.begin() + itemNumber - 1);
+                cout << "Beverage item removed successfully!" << endl;
+            }
+            else {
+                cout << "Invalid item number. No item removed." << endl;
+            }
+        }
     }
 }
