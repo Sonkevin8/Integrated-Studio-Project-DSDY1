@@ -41,6 +41,21 @@ struct Beverage {
     }
 };
 
+struct LunchCart {
+    Food main;
+    Beverage drink;
+
+    LunchCart(Food food, Beverage beverage){
+    
+        main = food;
+        drink = beverage;
+    }
+    LunchCart() {
+        main = Food();
+        drink = Beverage();
+    }
+};
+
 vector<Food> menu = {
     {"Sandwiches", 3.99},
     {"Fries", 2.49},
@@ -57,9 +72,11 @@ vector<Beverage> beverages = {
     {"Coffee", 2.49}
 };
 
+
 struct User {                                                                                                           //Class for the users to login 
     string username;
     string password;
+    LunchCart user_lunch;
     int age;
     bool admin;                                                                                                         //This bool will give more functionality for  administrative users i.e teachers
 
@@ -71,6 +88,7 @@ struct User {                                                                   
     };
 
     User() {
+        user_lunch = LunchCart();
         username = "";
         password = "";
         age = -1;
@@ -312,6 +330,7 @@ void showMenu() {                                                               
 }
 
 void editMenu() {
+    
     int menuChoice;
     cout << "Menu Options:" << endl;
     cout << "1. Food" << endl;
