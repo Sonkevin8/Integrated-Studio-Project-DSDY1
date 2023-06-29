@@ -4,7 +4,7 @@
 
 using namespace std;
 
-struct Food {                                                                                                       
+struct Food {                                                                                                           //user defined variable for food                                               
     string name;
     float price;
     int count;
@@ -22,7 +22,7 @@ struct Food {
     }
 };
 
-struct Beverage {                                                                                                   
+struct Beverage {                                                                                                         //Struct menu for beverages                           
     
     string name;
     float price;
@@ -137,13 +137,13 @@ int main() {
 
                 cout << '\n' << "Please select an account by entering the corresponding number to log into the system: " << endl;
 
-                    for (int index = 0; index < vec_size; index++) {                                                                                     //Iterating through the vector to list all possible users that can log into the program
+                    for (int index = 0; index < vec_size; index++) {                                                                                     //Iterating through the vector to list all possible users that can log into the program, also utilising a loop that iterates so it counts the number of users currently registered
                         if (users[index].age != -1) {
                             cout << option << ") Username: " << users[index].username << endl;
                             option++;
                         }
                     }
-                cout << option << ") Go back to the menu " << endl;                                                                                      //Giving the user the option of going back                                                                                
+                cout << option << ") Go back to the menu " << endl;                                                                                      //Giving the user the option of going back If they havent created an account                                                                            
 
                 while (!(cin >> user_selection) || user_selection > option || user_selection < 1) {
                     cout << "Invalid input. Please enter a valid input: ";
@@ -151,18 +151,18 @@ int main() {
                     cin.ignore(123, '\n');
                 }
 
-                if (user_selection == option) {
+                if (user_selection == option) {                                                                                                             
                     cout << '\n' << endl;
                 }
-                else {
+                else {                                                                                                                                     //Once a account has been selected they will be asked to enter the coressponding password for the user
                     int user_account = user_selection - 1;
                     string user_password;
                     int password_attempts = 0;
 
-                    cout << users[user_account].username << ", please enter your password: ";
+                    cout << users[user_account].username << ", please enter your password: ";                                                                     
                     cin >> user_password;
 
-                    while (user_password != users[user_account].password) {
+                    while (user_password != users[user_account].password) {                                                                                //Gives the user multiple attempts, if the maximum has been reached they are returned into the menu which avoids the case in which an account is selected and user doesnt know the password leaving them trapped in the loop
                         if (password_attempts == 2) {
                             cout << "You have reached the maximum number of attempts allowed. Returning to the menu." << '\n' << endl;
                                 break;
@@ -175,7 +175,7 @@ int main() {
                         }
                     }
 
-                    if (user_password == users[user_account].password) {
+                    if (user_password == users[user_account].password) {                                                                                    //If the password is correct it will welcome them back 
                         int user_menu_selection = 0;
                         int menu_options = 1;
 
@@ -183,7 +183,7 @@ int main() {
 
                         bool stay_logged_in = true;
 
-                        while (stay_logged_in) {
+                        while (stay_logged_in) {                                                                                                            //Second loop for when the user logs in and registers, allowing them to select mutiple options
                             cout << "Would you like to:" << endl << endl;
                             cout << menu_options << ") Place an order" << endl;
                             menu_options++;
@@ -191,19 +191,19 @@ int main() {
                             menu_options++;
                             cout << menu_options << ") Logout" << endl;
 
-                            if (users[user_account].admin) {
+                            if (users[user_account].admin) {                                                                                                //Additional option which will only show up if the user is an adminisrtator i.e an educator at the facility
                                 menu_options++;
                                 cout << menu_options << ") Edit Menu" << endl;
                             }
 
-                            while (!(cin >> user_menu_selection) || user_menu_selection < 1 || user_menu_selection > menu_options) {
+                            while (!(cin >> user_menu_selection) || user_menu_selection < 1 || user_menu_selection > menu_options) {                        //Input handler 
                                 cout << "Error: You have entered an invalid input. Please enter a valid input: ";
                                 cin.clear();
                                 cin.ignore();
                                 cin >> user_menu_selection;
                             }
 
-                            if (user_menu_selection == 1) {
+                            if (user_menu_selection == 1) {                                                                                                 //Option will allow users to select items from the menu to order
                                 
                                 cout << endl << "Place your order: " << endl;
                                 showMenu();
@@ -234,7 +234,7 @@ int main() {
                                 stay_logged_in = false;
                                 menu_options = 1;
                             }
-                            else if (user_menu_selection == 4 && users[user_account].admin) {
+                            else if (user_menu_selection == 4 && users[user_account].admin) {                                                                //Option will call seperate function which allows the admin to remove and add items to the menu
                                 editMenu();
                                 menu_options = 1;
                             }
@@ -243,9 +243,9 @@ int main() {
                 }
             }
         }
-        else if (initial_input == 2) {
+        else if (initial_input == 2) {                                                                                                                      //If the user selects registration they will hit this block of code
             string name;
-            string password;
+            string password;                                                                                                                                //Initialising variables which will be used for the code
             int age = 0;
             char occupation = '\n';
             bool admin = false;
@@ -268,32 +268,32 @@ int main() {
 
             cout << "Are you a student or a teacher at this institution (s/t)?: ";
 
-            while (!(cin >> occupation) && occupation != 's' && occupation != 't') {
+            while (!(cin >> occupation) && occupation != 's' && occupation != 't') {                                                                        //input handler 
                 cout << "Please enter a valid input specified within the brackets." << endl;
                 cin.clear();
                 cin.ignore(123, '\n');
             }
 
-            if (occupation == 's') {
+            if (occupation == 's') {                                                                                                                        //If the user is a student they do not get admin priveldges
                 admin = false;
             }
-            else if (occupation == 't') {
+            else if (occupation == 't') {                                   
                 admin = true;
             }
 
-            User entry = User(name, password, age, admin);
+            User entry = User(name, password, age, admin);                                                                                                  //Using the information gathered from the user an user entity is created using the constructor
 
-            if (users[0].age == -1) {
+            if (users[0].age == -1) {                                                                                                                       //if the vector list is initially empty then it will be inserted at the front 
                 users[0] = entry;
             }
             else {
-                users.push_back(entry);
+                users.push_back(entry);                                                                                                                     //If there are already valid users registered to the system new users will be added to the back
             }
 
-            cout << "Account has been successfully created! Please login to access our menu." << endl << endl;
-        }
-        else if (initial_input == 3) {
-            run = false;
+            cout << "Account has been successfully created! Please login to access our menu." << endl << endl;                                              //Letting user know the system has logged their information and they are ready to log in
+        }   
+        else if (initial_input == 3) {                                                                                                                      //If the user decideds to exit the program the while loop is killed by changing run to false
+            run = false;    
         }
     }
 
@@ -302,14 +302,15 @@ int main() {
 
 
 void showMenu() {                                                                                                         //Food menu code
-    cout << "------------------------" << endl;
+    
+    cout << "------------------------" << endl;                                                                             
     cout << "        FOOD MENU        " << endl;
     cout << "------------------------" << endl;
 
 
 
     int i = 1;
-    for (auto item : menu) {
+    for (auto item : menu) {                                                                                               //For loop to show each item on the menu for the food 
         cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
         i++;
     }
@@ -324,7 +325,7 @@ void showMenu() {                                                               
 
 
     i = 1;
-    for (auto item : beverages) {
+    for (auto item : beverages) {                                                                                          //loop to show all the items for the bevarges menu
         cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
         i++;
     }
@@ -332,21 +333,21 @@ void showMenu() {                                                               
 
 void editMenu() {
     
-    int menuChoice;
+    int menuChoice;                                                                                                     //initilising variable to store user input
     cout << "Menu Options:" << endl;
     cout << "1. Add item" << endl;
     cout << "2. Remove item" << endl;
 
     cin >> menuChoice;
 
-    while (menuChoice != 1 && menuChoice != 2) {
+    while (menuChoice != 1 && menuChoice != 2) {                                                                        //Input handler to check bad inputs 
         cout << "Invalid input. Please enter a valid menu choice: ";
         cin.clear();
         cin.ignore();
         cin >> menuChoice;
     }
 
-    if (menuChoice == 1) {
+    if (menuChoice == 1) {                                                                                              //Selection statement whjich catches if the user wishes to add or remove items 
 
         int menuType;
         cout << "Menu Type:" << endl;
@@ -354,7 +355,7 @@ void editMenu() {
         cout << "2. Beverage" << endl;
         cin >> menuType;
 
-        while (menuType != 1 && menuType != 2) {
+        while (menuType != 1 && menuType != 2) {                                                                        //Input handler 
             cout << "Invalid input. Please enter a valid menu type: ";
             cin.clear();
             cin.ignore();
@@ -364,14 +365,14 @@ void editMenu() {
         string itemName;
         float itemPrice;
 
-        cout << "Enter the name of the new item: ";
+        cout << "Enter the name of the new item: ";                                                                    
         cin.ignore();
         getline(cin, itemName);
 
         cout << "Enter the price of the new item: $";
         cin >> itemPrice;
 
-        if (menuType == 1) {
+        if (menuType == 1) {                                                                                               //Nested slection statment for the user should they choose to change either food or beverages
             Food newFood(itemName, itemPrice);
             menu.push_back(newFood);
             cout << "Food item added successfully!" << endl;
@@ -384,21 +385,21 @@ void editMenu() {
             cout << "Added item to Beverage Menu: " << newBeverage.name << " ($" << newBeverage.price << ")" << endl;
         }
     }
-    else if (menuChoice == 2) {
+    else if (menuChoice == 2) {                                                                                            //selection statement if they want to change the drinks
         int menuType;
         cout << "Menu Type:" << endl;
         cout << "1. Food" << endl;
         cout << "2. Beverage" << endl;
         cin >> menuType;
 
-        while (menuType != 1 && menuType != 2) {
+        while (menuType != 1 && menuType != 2) {                                                                        //Input handler to catch bad inputs 
             cout << "Invalid input. Please enter a valid menu type: ";
             cin.clear();
             cin.ignore();
             cin >> menuType;
         }
 
-        if (menuType == 1) {
+        if (menuType == 1) {                                                                                            
             
 
             if (!menu.empty()) {
