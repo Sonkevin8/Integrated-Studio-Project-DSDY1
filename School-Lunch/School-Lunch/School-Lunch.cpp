@@ -56,7 +56,7 @@ struct LunchCart {
     }
 };
 
-vector<Food> menu = {
+vector<Food> menu = {                                                                                                     //Global Variable for food and beverages which can be accessed anywhere within the code file
     {"Sandwiches", 3.99},
     {"Fries", 2.49},
     {"Burgers", 4.99},
@@ -96,13 +96,13 @@ struct User {                                                                   
     }
 };
 
-void showMenu();
+void showMenu();                                                                                                           //Initialise seperate functions so that the compiler knows that it exists and we can put the methods for these functions below the main
 void editMenu();
 
 int main() {
     
-    bool run = true;
-    vector<User> users = { User() };
+    bool run = true;                                                                                                       //Catch for the outer loop
+    vector<User> users = { User() };                                                                                       //Declaring vactor of user defined variable for users so that many people may register and log in for any given instance of the program running
 
     while (run) {
         cout << "Welcome to the school lunch system" << endl;
@@ -119,30 +119,31 @@ int main() {
 
         cin >> initial_input;
 
-        while (initial_input != 1 && initial_input != 2 && initial_input != 3) {
+        while (initial_input != 1 && initial_input != 2 && initial_input != 3) {                                            //Input handler to catch the majority of unwanted inputs
             cin.clear();
             cin.ignore();
             cout << "Please enter a valid input: ";
             cin >> initial_input;
         }
 
-        if (initial_input == 1) {
-            if (users[0].age == -1) {
-                cout << "Error: There are no accounts registered. Please create an account to continue." << endl << endl;
+        if (initial_input == 1) {                                                                                                                       //if statments to catch each input the user may select
+            
+            if (users[0].age == -1) {                                                                                                                   //Because we initilaised the user within the vector it will have a default value of negative one allowing the compiler to know there are no users currently registered
+                cout << "Error: There are no accounts registered. Please create an account to continue." << endl << endl;                                       
             }
-            else {
+            else {                                                                                                                                      //The user has selected a valid account that is registered with the system and so the program continues
                 int user_selection = -1;
                 int option = 1;
 
                 cout << '\n' << "Please select an account by entering the corresponding number to log into the system: " << endl;
 
-                    for (int index = 0; index < vec_size; index++) {
+                    for (int index = 0; index < vec_size; index++) {                                                                                     //Iterating through the vector to list all possible users that can log into the program
                         if (users[index].age != -1) {
                             cout << option << ") Username: " << users[index].username << endl;
                             option++;
                         }
                     }
-                cout << option << ") Go back to the menu " << endl;
+                cout << option << ") Go back to the menu " << endl;                                                                                      //Giving the user the option of going back                                                                                
 
                 while (!(cin >> user_selection) || user_selection > option || user_selection < 1) {
                     cout << "Invalid input. Please enter a valid input: ";
@@ -247,7 +248,7 @@ int main() {
             string password;
             int age = 0;
             char occupation = '\n';
-                bool admin = false;
+            bool admin = false;
 
             cout << endl << "To create a new account, please enter the following details: " << endl;
             cout << endl << "Enter your username: ";
