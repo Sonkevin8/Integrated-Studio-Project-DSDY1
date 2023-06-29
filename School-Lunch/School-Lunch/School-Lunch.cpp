@@ -333,8 +333,8 @@ void editMenu() {
     
     int menuChoice;
     cout << "Menu Options:" << endl;
-    cout << "1. Food" << endl;
-    cout << "2. Beverage" << endl;
+    cout << "1. Add item" << endl;
+    cout << "2. Remove item" << endl;
 
     cin >> menuChoice;
 
@@ -346,90 +346,117 @@ void editMenu() {
     }
 
     if (menuChoice == 1) {
-        cout << "Food Menu Options:" << endl;
-        cout << "1. Add item" << endl;
-        cout << "2. Remove item" << endl;
 
-        int foodChoice;
-        cin >> foodChoice;
+        int menuType;
+        cout << "Menu Type:" << endl;
+        cout << "1. Food" << endl;
+        cout << "2. Beverage" << endl;
+        cin >> menuType;
 
-        while (foodChoice != 1 && foodChoice != 2) {
-            cout << "Invalid input. Please enter a valid food menu choice: ";
+        while (menuType != 1 && menuType != 2) {
+            cout << "Invalid input. Please enter a valid menu type: ";
             cin.clear();
             cin.ignore();
-            cin >> foodChoice;
+            cin >> menuType;
         }
 
-        if (foodChoice == 1) {
-            string itemName;
-            float itemPrice;
+        string itemName;
+        float itemPrice;
 
-            cout << "Enter the name of the new food item: ";
-            cin.ignore();
-            getline(cin, itemName);
+        cout << "Enter the name of the new item: ";
+        cin.ignore();
+        getline(cin, itemName);
 
-            cout << "Enter the price of the new food item: $";
-            cin >> itemPrice;
+        cout << "Enter the price of the new item: $";
+        cin >> itemPrice;
 
-            menu.push_back({ itemName, itemPrice });
-            cout << "Food item added!" << endl;
+        if (menuType == 1) {
+            Food newFood(itemName, itemPrice);
+            menu.push_back(newFood);
+            cout << "Food item added successfully!" << endl;
+            cout << "Added item to Food Menu: " << newFood.name << " ($" << newFood.price << ")" << endl;
         }
-        else if (foodChoice == 2) {
-            cout << "Enter the number of the food item you want to remove: ";
-
-            int itemNumber;
-            cin >> itemNumber;
-
-            if (itemNumber >= 1 && itemNumber <= menu.size()) {
-                menu.erase(menu.begin() + itemNumber - 1);
-                cout << "Food item removed successfully!" << endl;
-            }
-            else {
-                cout << "Invalid item number. No item removed." << endl;
-            }
+        else if (menuType == 2) {
+            Beverage newBeverage(itemName, itemPrice);
+            beverages.push_back(newBeverage);
+            cout << "Beverage item added successfully!" << endl;
+            cout << "Added item to Beverage Menu: " << newBeverage.name << " ($" << newBeverage.price << ")" << endl;
         }
     }
     else if (menuChoice == 2) {
-        cout << "Beverage Menu Options:" << endl;
-        cout << "1. Add item" << endl;
-        cout << "2. Remove item" << endl;
+        int menuType;
+        cout << "Menu Type:" << endl;
+        cout << "1. Food" << endl;
+        cout << "2. Beverage" << endl;
+        cin >> menuType;
 
-        int beverageChoice;
-        cin >> beverageChoice;
-
-        while (beverageChoice != 1 && beverageChoice != 2) {
-            cout << "Invalid input. Please enter a valid beverage menu choice: ";
+        while (menuType != 1 && menuType != 2) {
+            cout << "Invalid input. Please enter a valid menu type: ";
             cin.clear();
             cin.ignore();
-            cin >> beverageChoice;
+            cin >> menuType;
         }
 
-        if (beverageChoice == 1) {
-            string itemName;
-            float itemPrice;
+        if (menuType == 1) {
+            
 
-            cout << "Enter the name of the new beverage item: ";
-            cin.ignore();
-            getline(cin, itemName);
+            if (!menu.empty()) {
+                cout << "Current Food Menu:" << endl;
 
-            cout << "Enter the price of the new beverage item: $";
-            cin >> itemPrice;
+                int i = 1;
+                for (auto item : menu) {
+                    cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
+                    i++;
+                }
 
-            beverages.push_back({ itemName, itemPrice });
-            cout << "Beverage item added successfully!" << endl;
-        }
-        else if (beverageChoice == 2) {
-            cout << "Enter the number of the beverage item you want to remove: ";
+                cout << "Enter the number of the item you want to remove: ";
 
-            int itemNumber;
-            cin >> itemNumber;
+                int itemNumber;
+                cin >> itemNumber;
 
-            if (itemNumber >= 1 && itemNumber <= beverages.size()) {
-                beverages.erase(beverages.begin() + itemNumber - 1);
-                cout << "Beverage item removed successfully!" << endl;
+                if (itemNumber >= 1 && itemNumber <= menu.size()) {
+                    Food removedFood = menu[itemNumber - 1];
+                    menu.erase(menu.begin() + itemNumber - 1);
+                    cout << "Food item removed successfully!" << endl;
+                    cout << "Removed item from Food Menu: " << removedFood.name << " ($" << removedFood.price << ")" << endl;
+                }
+                else {
+                    cout << "Invalid item number. No item removed." << endl;
+                }
             }
             else {
-                cout << "Invalid item number. No item removed." << endl;
+                cout << "The food menu is empty. No item removed." << endl;
+            }
+        }
+        else if (menuType == 2) {
+            
+
+            if (!beverages.empty()) {
+                cout << "Current Beverage Menu:" << endl;
+
+                int i = 1;
+                for (auto item : beverages) {
+                    cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
+                    i++;
+                }
+
+                cout << "Enter the number of the item you want to remove: ";
+
+                int itemNumber;
+                cin >> itemNumber;
+
+                if (itemNumber >= 1 && itemNumber <= beverages.size()) {
+                    Beverage removedBeverage = beverages[itemNumber - 1];
+                    beverages.erase(beverages.begin() + itemNumber - 1);
+                    cout << "Beverage item removed successfully!" << endl;
+                    cout << "Removed item from Beverage Menu: " << removedBeverage.name << " ($" << removedBeverage.price << ")" << endl;
+                }
+                else {
+                    cout << "Invalid item number. No item removed." << endl;
+                }
+            }
+            else {
+                cout << "The beverage menu is empty. No item removed." << endl;
             }
         }
     }
