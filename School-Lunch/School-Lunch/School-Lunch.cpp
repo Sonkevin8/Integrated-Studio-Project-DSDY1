@@ -42,7 +42,7 @@ struct Beverage {                                                               
 };
 
 
-struct LunchCart {
+struct LunchCart {                                                                                                            //Cart to store users selection and allow us to be able to show the cart as well as calulate cost
     
     Food food_cart;
     Beverage drink_cart;
@@ -234,7 +234,7 @@ int main() {
                                 while (!(cin >> order_qty) || order_qty < 0) {
                                     cout << "Please enter in a valid quantity: ";
                                 }
-                                Food f = Food();
+                                Food f = Food();                                                                                                                                //Creating an instance of food class so we can insert into users lunchcart
                                 
                                 if (order_choice >= 1 && order_choice <= food_menu.size()) {
                                     f = food_menu[order_choice - 1];
@@ -268,7 +268,7 @@ int main() {
                                 }
                                 float drink_cost = b.count * b.price;
                                 users[user_account].items = (LunchCart(f, b, (drink_cost+food_cost)));
-                                menu_options = 1;                                                                                                        //At the end of each selection statment menu options has to be reset to a value of 1 or else the program will continue to climb and climb
+                                menu_options = 1;                                                                                                                                   //At the end of each selection statment menu options has to be reset to a value of 1 or else the program will continue to climb and climb
                             }
                             else if (user_menu_selection == 2) {
 
@@ -283,11 +283,11 @@ int main() {
                                 menu_options = 1;
                             }
                             else if (user_menu_selection == 3) {
-                                cout << "Logging out..." << endl;
+                                cout << "Logging out..." << '\n' << endl;
                                 stay_logged_in = false;
                                 menu_options = 1;
                             }
-                            else if (user_menu_selection == 4 && users[user_account].admin) {                                                                //Option will call seperate function which allows the admin to remove and add items to the menu
+                            else if (user_menu_selection == 4 && users[user_account].admin) {                                                                                       //Option will call seperate function which allows the admin to remove and add items to the menu
                                 editMenu();
                                 menu_options = 1;
                             }
@@ -296,9 +296,9 @@ int main() {
                 }
             }
         }
-        else if (initial_input == 2) {                                                                                                                      //If the user selects registration they will hit this block of code
+        else if (initial_input == 2) {                                                                                                                                              //If the user selects registration they will hit this block of code
             string name;
-            string password;                                                                                                                                //Initialising variables which will be used for the code
+            string password;                                                                                                                                                        //Initialising variables which will be used for the code
             int age = 0;
             char occupation = '\n';
             bool admin = false;
@@ -306,7 +306,7 @@ int main() {
             cout << endl << "To create a new account, please enter the following details: " << endl;
             cout << endl << "Enter your username: ";
             cin.ignore(1, '\n');
-                getline(cin, name);
+            getline(cin, name);
 
             cout << "Please enter a strong password: ";
             getline(cin, password);
@@ -355,6 +355,7 @@ int main() {
 
 
 void showMenu() {                                                                                                         //Food menu code
+    
     cout << "------------------------" << endl;
     cout << "        FOOD MENU        " << endl;
     cout << "------------------------" << endl;
@@ -442,6 +443,7 @@ void editMenu() {
         cout << "Menu Type:" << endl;
         cout << "1. Food" << endl;
         cout << "2. Beverage" << endl;
+        
         cin >> menuType;
 
         while (menuType != 1 && menuType != 2) {                                                                        //Input handler to catch bad inputs 
