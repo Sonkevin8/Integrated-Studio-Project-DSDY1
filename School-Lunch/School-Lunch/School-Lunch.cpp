@@ -159,6 +159,7 @@ int main() {
                     }
 
                     if (user_password == users[user_account].password) {                                                                                    //If the password is correct it will welcome them back 
+                        
                         int user_menu_selection = 0;
                         int menu_options = 1;
 
@@ -169,8 +170,6 @@ int main() {
                         while (stay_logged_in) {                                                                                                            //Second loop for when the user logs in and registers, allowing them to select mutiple options
                             cout << "Would you like to:" << endl << endl;
                             cout << menu_options << ") Place an order" << endl;
-                            menu_options++;
-                            cout << menu_options << ") View lunch Cart" << endl;
                             menu_options++;
                             cout << menu_options << ") Logout" << endl;
 
@@ -194,11 +193,11 @@ int main() {
                                 int order_choice = 0;
                                 cout << endl << "Enter your choice: ";
                                 cin >> order_choice;
-                                ///////////////////////////
+                                
                                 if (order_choice == 0) {
                                     cout << "No food item added to the cart." << endl;
                                 }
-                                ////////////////////////////
+                                
                                 int order_qty = 0;
                                 cout << "Enter quantity: ";
                                 cin >> order_qty;
@@ -206,14 +205,10 @@ int main() {
                                 if (order_choice >= 1 && order_choice <= menu.size()) {
                                     Food f = menu[order_choice - 1];
                                     f.count = order_qty;
-
                                     cout << endl << f.name << " x " << order_qty << " added to the cart." << endl;
-
                                 }
-                                //////////////////////////////////////////
-
+                               
                                 cout << endl << "Place your Beverage order or enter 0 for none " << endl;
-
                                 cout << endl << "Enter your choice: ";
                                 cin >> order_choice;
 
@@ -229,28 +224,15 @@ int main() {
                                     b.count = order_qty;
 
                                     cout << endl << b.name << " x " << order_qty << " added to the cart." << endl;
-
                                 }
-
-
+                                    menu_options = 1;                                                                                                        //At the end of each selection statment menu options has to be reset to a value of 1 or else the program will continue to climb and climb
                             }
-
-
-                            //////////////////////////////////////////////////////////
-
-                                menu_options = 1; ///////////////////////
-                           // }
-                            //else
-                                    if (user_menu_selection == 2) {
-                                cout << "Button 2 is working!" << endl;
-                                menu_options = 1;
-                            }
-                            else if (user_menu_selection == 3) {
+                            else if (user_menu_selection == 2) {
                                 cout << "Logging out..." << endl;
                                 stay_logged_in = false;
                                 menu_options = 1;
                             }
-                            else if (user_menu_selection == 4 && users[user_account].admin) {                                                                //Option will call seperate function which allows the admin to remove and add items to the menu
+                            else if (user_menu_selection == 3 && users[user_account].admin) {                                                                //Option will call seperate function which allows the admin to remove and add items to the menu
                                 editMenu();
                                 menu_options = 1;
                             }
