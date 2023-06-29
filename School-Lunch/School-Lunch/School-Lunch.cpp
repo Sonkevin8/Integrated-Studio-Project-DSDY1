@@ -6,10 +6,10 @@ using namespace std;
 
 struct Food {                                                                                                           //user defined variable for food                                               
     string name;
-    float price;
+    double price;
     int count;
 
-    Food(string n, float p) {
+    Food(string n, double p) {
         name = n;
         price = p;
         count = 0;
@@ -25,10 +25,10 @@ struct Food {                                                                   
 struct Beverage {                                                                                                         //Struct menu for beverages                           
     
     string name;
-    float price;
+    double price;
     int count;
 
-    Beverage(string n, float p) {
+    Beverage(string n, double p) {
         name = n;
         price = p;
         count = 0;
@@ -41,7 +41,29 @@ struct Beverage {                                                               
     }
 };
 
-vector<Food> menu = {                                                                                                     //Global Variable for food and beverages which can be accessed anywhere within the code file
+
+struct LunchCart {
+    
+    Food food_cart;
+    Beverage drink_cart;
+    float total_price;
+
+    LunchCart() {
+        food_cart = Food();
+        drink_cart = Beverage();
+        total_price = 0;
+    }
+
+    LunchCart(Food main, Beverage drink, float price) {
+        
+        food_cart = main;
+        drink_cart = drink;
+        total_price = price;
+    }
+};
+
+
+vector<Food> food_menu = {                                                                                                     //Global Variable for food and beverages which can be accessed anywhere within the code file
     {"Sandwiches", 3.99},
     {"Fries", 2.49},
     {"Burgers", 4.99},
@@ -50,7 +72,7 @@ vector<Food> menu = {                                                           
 
 
 
-vector<Beverage> beverages = {
+vector<Beverage> beverages_menu = {
     {"Soda", 1.49},
     {"Water", 0.99},
     {"Juice", 1.99},
@@ -59,9 +81,11 @@ vector<Beverage> beverages = {
 
 
 struct User {                                                                                                           //Class for the users to login 
+    
     string username;
     string password;
     int age;
+    LunchCart items;
     bool admin;                                                                                                         //This bool will give more functionality for  administrative users i.e teachers
 
     User(string username_entered, string password_entered, int age_entered, bool admin_entered) {
@@ -69,6 +93,7 @@ struct User {                                                                   
         password = password_entered;
         age = age_entered;
         admin = admin_entered;
+        items = LunchCart();
     };
 
     User() {
@@ -91,7 +116,7 @@ int main() {
         cout << "Welcome to the school lunch system" << endl;
         cout << "----------------------------------" << endl;
 
-        int vec_size = users.size();
+        size_t vec_size = users.size();
         int initial_input = 0;
 
         cout << endl << "To utilize this program, you must have an account." << endl;
@@ -171,6 +196,8 @@ int main() {
                             cout << "Would you like to:" << endl << endl;
                             cout << menu_options << ") Place an order" << endl;
                             menu_options++;
+                            cout << menu_options << ") View lunchcart?" << endl;
+                            menu_options++;
                             cout << menu_options << ") Logout" << endl;
 
                             if (users[user_account].admin) {                                                                                                //Additional option which will only show up if the user is an adminisrtator i.e an educator at the facility
@@ -179,60 +206,87 @@ int main() {
                             }
 
                             while (!(cin >> user_menu_selection) || user_menu_selection < 1 || user_menu_selection > menu_options) {                        //Input handler 
-                                cout << "Error: You have entered an invalid input. Please enter a valid input: ";
+                                cout << "Please enter a valid input: ";
                                 cin.clear();
                                 cin.ignore();
-                                cin >> user_menu_selection;
                             }
 
                             if (user_menu_selection == 1) {                                                                                                 //Option will allow users to select items from the menu to order
                                 
-                                cout << endl << "Place your Food order or enter 0 for none" << endl;
+                                cout << endl << "Place your Food order" << endl;
                                 showMenu();
 
                                 int order_choice = 0;
                                 cout << endl << "Enter your choice: ";
-                                cin >> order_choice;
-                                
+           
+                                while ((!(cin >> order_choice)) || order_choice <= 0 || order_choice > food_menu.size()) {
+                                    cout << "Please place in a valid order! ";
+                                    cin.clear();
+                                    cin.ignore();
+                                }
                                 if (order_choice == 0) {
                                     cout << "No food item added to the cart." << endl;
                                 }
                                 
                                 int order_qty = 0;
                                 cout << "Enter quantity: ";
-                                cin >> order_qty;
-
-                                if (order_choice >= 1 && order_choice <= menu.size()) {
-                                    Food f = menu[order_choice - 1];
+                                while (!(cin >> order_qty) || order_qty < 0) {
+                                    cout << "Please enter in a valid quantity: ";
+                                }
+                                Food f = Food();
+                                
+                                if (order_choice >= 1 && order_choice <= food_menu.size()) {
+                                    f = food_menu[order_choice - 1];
                                     f.count = order_qty;
                                     cout << endl << f.name << " x " << order_qty << " added to the cart." << endl;
                                 }
-                               
+                                float food_cost = f.price * f.count;
+                             
                                 cout << endl << "Place your Beverage order or enter 0 for none " << endl;
                                 cout << endl << "Enter your choice: ";
-                                cin >> order_choice;
-
+                                
+                                while (!(cin >> order_choice) || order_choice<=0 || order_choice > beverages_menu.size()) {
+                                    cout << "Please place in a valid order: ";
+                                }
                                 cout << "Enter quantity: ";
-                                cin >> order_qty;
+                                
+                                while (!(cin >> order_qty) || order_qty < 0) {
+                                    cout << "please enter in a valid quantity: ";
+                                }
 
+                                Beverage b = Beverage();
+              
                                 if (order_choice == 0) {
                                     cout << "No food item added to the cart." << endl;
                                 }
-
-                                if (order_choice >= 1 && order_choice <= beverages.size()) {
-                                    Beverage b = beverages[order_choice - 1];
+                                else if (order_choice >= 1 && order_choice <= beverages_menu.size()) {
+                                    b = beverages_menu[order_choice - 1];
                                     b.count = order_qty;
 
                                     cout << endl << b.name << " x " << order_qty << " added to the cart." << endl;
                                 }
-                                    menu_options = 1;                                                                                                        //At the end of each selection statment menu options has to be reset to a value of 1 or else the program will continue to climb and climb
+                                float drink_cost = b.count * b.price;
+                                users[user_account].items = (LunchCart(f, b, (drink_cost+food_cost)));
+                                menu_options = 1;                                                                                                        //At the end of each selection statment menu options has to be reset to a value of 1 or else the program will continue to climb and climb
                             }
                             else if (user_menu_selection == 2) {
+
+                                if (users[user_account].items.total_price == 0) {
+                                    cout << "It appears you have nothing in your lunch cart. PLease order something and it will show here" << endl;
+                                }
+                                else {
+                                    cout << '\n' << "Food item(s): " << users[user_account].items.food_cart.name << " x" << users[user_account].items.food_cart.count << endl;
+                                    cout << "Beverage item(s): " << users[user_account].items.drink_cart.name << " x" << users[user_account].items.drink_cart.count << endl;
+                                    cout << "Total Price: $" << users[user_account].items.total_price << '\n' << endl;
+                                }
+                                menu_options = 1;
+                            }
+                            else if (user_menu_selection == 3) {
                                 cout << "Logging out..." << endl;
                                 stay_logged_in = false;
                                 menu_options = 1;
                             }
-                            else if (user_menu_selection == 3 && users[user_account].admin) {                                                                //Option will call seperate function which allows the admin to remove and add items to the menu
+                            else if (user_menu_selection == 4 && users[user_account].admin) {                                                                //Option will call seperate function which allows the admin to remove and add items to the menu
                                 editMenu();
                                 menu_options = 1;
                             }
@@ -266,7 +320,7 @@ int main() {
 
             cout << "Are you a student or a teacher at this institution (s/t)?: ";
 
-            while (!(cin >> occupation) && occupation != 's' && occupation != 't') {                                                                        //input handler 
+            while (!(cin >> occupation) || occupation != 's' && occupation != 't') {                                                                        //input handler 
                 cout << "Please enter a valid input specified within the brackets." << endl;
                 cin.clear();
                 cin.ignore(123, '\n');
@@ -307,7 +361,7 @@ void showMenu() {                                                               
 
 
     int i = 1;
-    for (auto item : menu) {
+    for (auto& item : food_menu) {
         cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
         i++;
     }
@@ -322,7 +376,7 @@ void showMenu() {                                                               
 
 
     i = 1;
-    for (auto item : beverages) {
+    for (auto& item : beverages_menu) {
         cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
         i++;
     }
@@ -371,13 +425,13 @@ void editMenu() {
 
         if (menuType == 1) {                                                                                               //Nested slection statment for the user should they choose to change either food or beverages
             Food newFood(itemName, itemPrice);
-            menu.push_back(newFood);
+            food_menu.push_back(newFood);
             cout << "Food item added successfully!" << endl;
             cout << "Added item to Food Menu: " << newFood.name << " ($" << newFood.price << ")" << endl;
         }
         else if (menuType == 2) {
             Beverage newBeverage(itemName, itemPrice);
-            beverages.push_back(newBeverage);
+            beverages_menu.push_back(newBeverage);
             cout << "Beverage item added successfully!" << endl;
             cout << "Added item to Beverage Menu: " << newBeverage.name << " ($" << newBeverage.price << ")" << endl;
         }
@@ -399,11 +453,11 @@ void editMenu() {
         if (menuType == 1) {                                                                                            
             
 
-            if (!menu.empty()) {
+            if (!food_menu.empty()) {
                 cout << "Current Food Menu:" << endl;
 
                 int i = 1;
-                for (auto item : menu) {
+                for (auto& item : food_menu) {
                     cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
                     i++;
                 }
@@ -413,9 +467,9 @@ void editMenu() {
                 int itemNumber;
                 cin >> itemNumber;
 
-                if (itemNumber >= 1 && itemNumber <= menu.size()) {
-                    Food removedFood = menu[itemNumber - 1];
-                    menu.erase(menu.begin() + itemNumber - 1);
+                if (itemNumber >= 1 && itemNumber <= food_menu.size()) {
+                    Food removedFood = food_menu[itemNumber - 1];
+                    food_menu.erase(food_menu.begin() + itemNumber - 1);
                     cout << "Food item removed successfully!" << endl;
                     cout << "Removed item from Food Menu: " << removedFood.name << " ($" << removedFood.price << ")" << endl;
                 }
@@ -430,11 +484,11 @@ void editMenu() {
         else if (menuType == 2) {
             
 
-            if (!beverages.empty()) {
+            if (!beverages_menu.empty()) {
                 cout << "Current Beverage Menu:" << endl;
 
                 int i = 1;
-                for (auto item : beverages) {
+                for (auto& item : beverages_menu) {
                     cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
                     i++;
                 }
@@ -444,9 +498,9 @@ void editMenu() {
                 int itemNumber;
                 cin >> itemNumber;
 
-                if (itemNumber >= 1 && itemNumber <= beverages.size()) {
-                    Beverage removedBeverage = beverages[itemNumber - 1];
-                    beverages.erase(beverages.begin() + itemNumber - 1);
+                if (itemNumber >= 1 && itemNumber <= beverages_menu.size()) {
+                    Beverage removedBeverage = beverages_menu[itemNumber - 1];
+                    beverages_menu.erase(beverages_menu.begin() + itemNumber - 1);
                     cout << "Beverage item removed successfully!" << endl;
                     cout << "Removed item from Beverage Menu: " << removedBeverage.name << " ($" << removedBeverage.price << ")" << endl;
                 }
