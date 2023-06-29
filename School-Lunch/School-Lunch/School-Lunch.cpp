@@ -99,6 +99,47 @@ struct User {                                                                   
 void showMenu();                                                                                                           //Initialise seperate functions so that the compiler knows that it exists and we can put the methods for these functions below the main
 void editMenu();
 
+
+
+///////////////////////////////////////////////////////////////////////////////////
+void showMenu() {
+
+//Food menu code
+cout << "------------------------" << endl;
+cout << "        FOOD MENU        " << endl;
+cout << "------------------------" << endl;
+
+int i = 1;
+for (auto item : menu) {
+    cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
+    i++;
+}
+cout << endl;
+}
+void showBeverageMenu() {
+
+    cout << "------------------------" << endl;
+    cout << "      BEVERAGE MENU      " << endl;
+    cout << "------------------------" << endl;
+
+
+
+    int i = 1;
+    for (auto item : beverages) {
+        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
+        i++;
+    }
+
+}
+////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
 int main() {
     
     bool run = true;                                                                                                       //Catch for the outer loop
@@ -205,13 +246,17 @@ int main() {
 
                             if (user_menu_selection == 1) {
                                 
-                                cout << endl << "Place your order: " << endl;
+                                cout << endl << "Place your Food order or enter 0 for none" << endl;
                                 showMenu();
 
                                 int order_choice = 0;
                                 cout << endl << "Enter your choice: ";
                                 cin >> order_choice;
-
+                                ///////////////////////////
+                                if (order_choice == 0) {
+                                    cout << "No food item added to the cart." << endl;
+                                }
+                                ////////////////////////////
                                 int order_qty = 0;
                                 cout << "Enter quantity: ";
                                 cin >> order_qty;
@@ -223,9 +268,39 @@ int main() {
                                     cout << endl << f.name << " x " << order_qty << " added to the cart." << endl;
 
                                 }
-                                menu_options = 1;
+                                //////////////////////////////////////////
+
+                                cout << endl << "Place your Beverage order or enter 0 for none " << endl;
+                                showBeverageMenu();
+
+                                cout << endl << "Enter your choice: ";
+                                cin >> order_choice;
+
+                                cout << "Enter quantity: ";
+                                cin >> order_qty;
+
+                                if (order_choice == 0) {
+                                    cout << "No food item added to the cart." << endl;
+                                }
+
+                                if (order_choice >= 1 && order_choice <= beverages.size()) {
+                                    Beverage b = beverages[order_choice - 1];
+                                    b.count = order_qty;
+
+                                    cout << endl << b.name << " x " << order_qty << " added to the cart." << endl;
+
+                                }
+
+
                             }
-                            else if (user_menu_selection == 2) {
+
+
+                            //////////////////////////////////////////////////////////
+
+                                menu_options = 1; ///////////////////////
+                           // }
+                            //else
+                                    if (user_menu_selection == 2) {
                                 cout << "Button 2 is working!" << endl;
                                 menu_options = 1;
                             }
@@ -301,34 +376,6 @@ int main() {
 }
 
 
-void showMenu() {                                                                                                         //Food menu code
-    cout << "------------------------" << endl;
-    cout << "        FOOD MENU        " << endl;
-    cout << "------------------------" << endl;
-
-
-
-    int i = 1;
-    for (auto item : menu) {
-        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
-        i++;
-    }
-    cout << endl;
-
-
-
-    cout << "------------------------" << endl;
-    cout << "      BEVERAGE MENU      " << endl;
-    cout << "------------------------" << endl;
-
-
-
-    i = 1;
-    for (auto item : beverages) {
-        cout << i << ". " << item.name << " ($" << item.price << ")" << endl;
-        i++;
-    }
-}
 
 void editMenu() {
     
