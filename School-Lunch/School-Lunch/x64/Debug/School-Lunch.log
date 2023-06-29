@@ -1,4 +1,4 @@
 ﻿  School-Lunch.cpp
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(243,49): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(268,50): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(244,49): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\School-Lunch\School-Lunch.cpp(269,50): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   School-Lunch.vcxproj -> C:\Users\willi\source\repos\Integrated-Studio-Project-DSDY1\School-Lunch\x64\Debug\School-Lunch.exe
