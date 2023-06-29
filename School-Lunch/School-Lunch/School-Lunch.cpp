@@ -129,10 +129,11 @@ int main() {
 
         while (initial_input != 1 && initial_input != 2 && initial_input != 3) {                                            //Input handler to catch the majority of unwanted inputs
             cin.clear();
-            cin.ignore();
+            cin.ignore( 123, '\n');
             cout << "Please enter a valid input: ";
             cin >> initial_input;
         }
+     
 
         if (initial_input == 1) {                                                                                                                       //if statments to catch each input the user may select
             
@@ -208,7 +209,7 @@ int main() {
                             while (!(cin >> user_menu_selection) || user_menu_selection < 1 || user_menu_selection > menu_options) {                        //Input handler 
                                 cout << "Please enter a valid input: ";
                                 cin.clear();
-                                cin.ignore();
+                                cin.ignore(123, '\n');
                             }
 
                             if (user_menu_selection == 1) {                                                                                                 //Option will allow users to select items from the menu to order
@@ -222,7 +223,7 @@ int main() {
                                 while ((!(cin >> order_choice)) || order_choice <= 0 || order_choice > food_menu.size()) {
                                     cout << "Please place in a valid order! ";
                                     cin.clear();
-                                    cin.ignore();
+                                    cin.ignore(123, '\n');
                                 }
                                 if (order_choice == 0) {
                                     cout << "No food item added to the cart." << endl;
@@ -394,7 +395,7 @@ void editMenu() {
     while (menuChoice != 1 && menuChoice != 2) {                                                                        //Input handler to check bad inputs 
         cout << "Invalid input. Please enter a valid menu choice: ";
         cin.clear();
-        cin.ignore();
+        cin.ignore(123, '\n');
         cin >> menuChoice;
     }
 
@@ -409,7 +410,7 @@ void editMenu() {
         while (menuType != 1 && menuType != 2) {                                                                        //Input handler 
             cout << "Invalid input. Please enter a valid menu type: ";
             cin.clear();
-            cin.ignore();
+            cin.ignore(123, '\n');
             cin >> menuType;
         }
 
@@ -446,7 +447,7 @@ void editMenu() {
         while (menuType != 1 && menuType != 2) {                                                                        //Input handler to catch bad inputs 
             cout << "Invalid input. Please enter a valid menu type: ";
             cin.clear();
-            cin.ignore();
+            cin.ignore(123, '\n');
             cin >> menuType;
         }
 
